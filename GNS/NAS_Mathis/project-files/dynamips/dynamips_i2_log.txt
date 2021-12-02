@@ -91,3 +91,30 @@ Dec 02 09:37:00.213 HYPERVISOR: exec_cmd: vm get_status R2
 Dec 02 09:37:00.215 HYPERVISOR: exec_cmd: vm stop R2 
 Dec 02 09:37:00.430 VM: VM R2 shutdown.
 Dec 02 09:37:00.431 HYPERVISOR: exec_cmd: vm extract_config R2 
+Dec 02 09:37:36.407 HYPERVISOR: exec_cmd: vm set_ghost_status R2 2 
+Dec 02 09:37:36.408 HYPERVISOR: exec_cmd: vm set_ghost_file R2 C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
+Dec 02 09:37:36.408 HYPERVISOR: exec_cmd: vm get_status R2 
+Dec 02 09:37:36.409 HYPERVISOR: exec_cmd: vm set_config R2 configs\i2_startup-config.cfg 
+Dec 02 09:37:36.410 HYPERVISOR: exec_cmd: vm start R2 
+Dec 02 09:40:55.680 HYPERVISOR: exec_cmd: vm get_status R2 
+Dec 02 09:40:55.680 HYPERVISOR: exec_cmd: vm stop R2 
+Dec 02 09:40:55.834 VM: VM R2 shutdown.
+Dec 02 09:40:55.835 HYPERVISOR: exec_cmd: vm extract_config R2 
+Dec 02 09:40:59.710 HYPERVISOR: exec_cmd: vm set_ghost_status R2 2 
+Dec 02 09:40:59.711 HYPERVISOR: exec_cmd: vm set_ghost_file R2 C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
+Dec 02 09:40:59.713 HYPERVISOR: exec_cmd: vm get_status R2 
+Dec 02 09:40:59.715 HYPERVISOR: exec_cmd: vm set_config R2 configs\i2_startup-config.cfg 
+Dec 02 09:40:59.716 HYPERVISOR: exec_cmd: vm start R2 
+Dec 02 09:42:59.224 HYPERVISOR: exec_cmd: vm get_status R2 
+Dec 02 09:42:59.226 HYPERVISOR: exec_cmd: vm stop R2 
+Dec 02 09:42:59.370 VM: VM R2 shutdown.
+Dec 02 09:42:59.371 HYPERVISOR: exec_cmd: vm extract_config R2 
+Dec 02 09:43:03.764 HYPERVISOR: exec_cmd: vm set_ghost_status R2 2 
+Dec 02 09:43:03.765 HYPERVISOR: exec_cmd: vm set_ghost_file R2 C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
+Dec 02 09:43:03.766 HYPERVISOR: exec_cmd: vm get_status R2 
+Dec 02 09:43:03.766 HYPERVISOR: exec_cmd: vm set_config R2 configs\i2_startup-config.cfg 
+Dec 02 09:43:03.767 HYPERVISOR: exec_cmd: vm start R2 
+Dec 02 09:44:26.444 HYPERVISOR: exec_cmd: vm get_status R2 
+Dec 02 09:44:26.445 HYPERVISOR: exec_cmd: vm stop R2 
+Dec 02 09:44:26.650 VM: VM R2 shutdown.
+Dec 02 09:44:26.651 HYPERVISOR: exec_cmd: vm extract_config R2 
