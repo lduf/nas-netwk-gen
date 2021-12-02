@@ -16,7 +16,26 @@
     "supplier": null,
     "topology": {
         "computes": [],
-        "drawings": [],
+        "drawings": [
+            {
+                "drawing_id": "1664111b-5750-4929-b0f1-d05ae3e901fc",
+                "locked": false,
+                "rotation": 0,
+                "svg": "<svg height=\"29\" width=\"111\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">192.168.1.1</text></svg>",
+                "x": -432,
+                "y": 301,
+                "z": 2
+            },
+            {
+                "drawing_id": "64e31a06-96b9-49d8-84b0-67ef9e5ddaa9",
+                "locked": false,
+                "rotation": 0,
+                "svg": "<svg height=\"29\" width=\"111\"><text fill=\"#000000\" fill-opacity=\"1.0\" font-family=\"TypeWriter\" font-size=\"10.0\" font-weight=\"bold\">192.168.2.1</text></svg>",
+                "x": 321,
+                "y": 298,
+                "z": 2
+            }
+        ],
         "links": [
             {
                 "filters": {},

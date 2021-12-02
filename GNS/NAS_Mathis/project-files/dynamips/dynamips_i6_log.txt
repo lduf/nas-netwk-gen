@@ -62,3 +62,12 @@ Dec 02 09:24:48.057 HYPERVISOR: exec_cmd: vm get_status R6
 Dec 02 09:24:48.057 HYPERVISOR: exec_cmd: vm stop R6 
 Dec 02 09:24:48.277 VM: VM R6 shutdown.
 Dec 02 09:24:48.278 HYPERVISOR: exec_cmd: vm extract_config R6 
+Dec 02 09:28:49.563 HYPERVISOR: exec_cmd: vm set_ghost_status R6 2 
+Dec 02 09:28:49.564 HYPERVISOR: exec_cmd: vm set_ghost_file R6 C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
+Dec 02 09:28:49.564 HYPERVISOR: exec_cmd: vm get_status R6 
+Dec 02 09:28:49.565 HYPERVISOR: exec_cmd: vm set_config R6 configs\i6_startup-config.cfg 
+Dec 02 09:28:49.566 HYPERVISOR: exec_cmd: vm start R6 
+Dec 02 09:37:00.450 HYPERVISOR: exec_cmd: vm get_status R6 
+Dec 02 09:37:00.450 HYPERVISOR: exec_cmd: vm stop R6 
+Dec 02 09:37:00.645 VM: VM R6 shutdown.
+Dec 02 09:37:00.645 HYPERVISOR: exec_cmd: vm extract_config R6 
