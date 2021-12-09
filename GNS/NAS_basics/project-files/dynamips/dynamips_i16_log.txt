@@ -1,0 +1,33 @@
+Dec 09 08:45:52.565 HYPERVISOR: Release 0.2.17-amd64/Darwin (tag 2017072410)
+Dec 09 08:45:52.566 HYPERVISOR: Started on IP = localhost, TCP port = 64186.
+Dec 09 08:45:52.571 HYPERVISOR: exec_cmd: hypervisor version 
+Dec 09 08:45:52.572 HYPERVISOR: exec_cmd: hypervisor working_dir /Users/lucasdufour/OneDrive - INSA Lyon/4TC/S1/NAS/TP/nas-netwk-gen/GNS/Nas_basics/project-files/dynamips 
+Dec 09 08:45:52.572 GENERAL: working_dir=/Users/lucasdufour/OneDrive - INSA Lyon/4TC/S1/NAS/TP/nas-netwk-gen/GNS/Nas_basics/project-files/dynamips
+Dec 09 08:45:52.572 HYPERVISOR: exec_cmd: hypervisor working_dir /Users/lucasdufour/OneDrive - INSA Lyon/4TC/S1/NAS/TP/nas-netwk-gen/GNS/Nas_basics/project-files/dynamips/6dac29bf-cb44-4939-9774-dcd875327fc2 
+Dec 09 08:45:52.572 GENERAL: working_dir=/Users/lucasdufour/OneDrive - INSA Lyon/4TC/S1/NAS/TP/nas-netwk-gen/GNS/Nas_basics/project-files/dynamips/6dac29bf-cb44-4939-9774-dcd875327fc2
+Dec 09 08:45:52.572 HYPERVISOR: exec_cmd: vm create R8 8 c7200 
+Dec 09 08:45:52.573 VM: VM R8 created.
+Dec 09 08:45:52.574 HYPERVISOR: exec_cmd: vm set_con_tcp_port R8 5015 
+Dec 09 08:45:52.574 HYPERVISOR: exec_cmd: c7200 get_mac_addr R8 
+Dec 09 08:45:52.574 HYPERVISOR: exec_cmd: vm get_status R8 
+Dec 09 08:45:52.575 HYPERVISOR: exec_cmd: vm slot_add_binding R8 0 0 C7200-IO-FE 
+Dec 09 08:45:52.575 HYPERVISOR: exec_cmd: vm set_disk0 R8 0 
+Dec 09 08:45:52.576 HYPERVISOR: exec_cmd: vm get_status R8 
+Dec 09 08:45:52.576 HYPERVISOR: exec_cmd: vm set_idle_pc R8 0x606df838 
+Dec 09 08:45:52.577 HYPERVISOR: exec_cmd: vm set_ios R8 /Users/lucasdufour/Downloads/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Dec 09 08:45:52.577 HYPERVISOR: exec_cmd: c7200 set_mac_addr R8 ca08.dfc2.0000 
+Dec 09 08:45:52.578 HYPERVISOR: exec_cmd: vm set_nvram R8 512 
+Dec 09 08:45:52.578 HYPERVISOR: exec_cmd: vm set_ram R8 512 
+Dec 09 08:45:52.578 HYPERVISOR: exec_cmd: vm get_status R8 
+Dec 09 08:45:52.579 HYPERVISOR: exec_cmd: vm slot_add_binding R8 1 0 PA-GE 
+Dec 09 08:45:52.579 HYPERVISOR: exec_cmd: vm get_status R8 
+Dec 09 08:45:52.579 HYPERVISOR: exec_cmd: vm slot_add_binding R8 2 0 PA-GE 
+Dec 09 08:45:52.580 HYPERVISOR: exec_cmd: vm get_status R8 
+Dec 09 08:45:52.580 HYPERVISOR: exec_cmd: vm slot_add_binding R8 3 0 PA-GE 
+Dec 09 08:45:52.583 HYPERVISOR: exec_cmd: vm set_con_tcp_port R8 5015 
+Dec 09 08:45:55.016 HYPERVISOR: exec_cmd: nio create_udp udp-c6524185-6b33-4259-8e18-b06cc1238487 10124 127.0.0.1 10125 
+Dec 09 08:45:55.242 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R8 1 0 udp-c6524185-6b33-4259-8e18-b06cc1238487 
+Dec 09 08:45:55.243 HYPERVISOR: exec_cmd: vm get_status R8 
+Dec 09 08:45:55.327 HYPERVISOR: exec_cmd: nio create_udp udp-925d457c-1681-4c88-823d-05a4e5ce5572 10130 127.0.0.1 10131 
+Dec 09 08:45:55.329 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R8 0 0 udp-925d457c-1681-4c88-823d-05a4e5ce5572 
+Dec 09 08:45:55.329 HYPERVISOR: exec_cmd: vm get_status R8 

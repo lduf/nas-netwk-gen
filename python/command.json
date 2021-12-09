@@ -1,5 +1,16 @@
 {
+    "config_terminal" : {
+        "required_config" : []
+    },
+    
+    "config_interface" : {
+        "required_config" : [
+            "config_terminal"
+        ]
+    },
     "ip_address" : {
-
+        "required_config" : [
+            "config_interface"
+        ]
     }
 }
