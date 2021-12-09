@@ -1,0 +1,12 @@
+Dec 02 08:50:07.318 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Dec 02 08:50:07.318 HYPERVISOR: Started on IP = localhost, TCP port = 54234.
+Dec 02 08:50:07.811 HYPERVISOR: exec_cmd: hypervisor version 
+Dec 02 08:50:07.812 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips 
+Dec 02 08:50:07.813 GENERAL: working_dir=C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips
+Dec 02 08:50:07.814 HYPERVISOR: exec_cmd: ethsw create Switch1 
+Dec 02 08:53:22.020 HYPERVISOR: exec_cmd: nio create_udp udp-bf08a2c1-35d4-48ea-9716-7408775903f3 10055 127.0.0.1 10054 
+Dec 02 08:53:22.029 HYPERVISOR: exec_cmd: ethsw add_nio Switch1 udp-bf08a2c1-35d4-48ea-9716-7408775903f3 
+Dec 02 08:53:22.039 HYPERVISOR: exec_cmd: ethsw set_access_port Switch1 udp-bf08a2c1-35d4-48ea-9716-7408775903f3 1 
+Dec 02 08:53:29.523 HYPERVISOR: exec_cmd: nio create_udp udp-f47d5ddc-2b24-4464-a75e-802f3118883d 10058 127.0.0.1 10059 
+Dec 02 08:53:29.524 HYPERVISOR: exec_cmd: ethsw add_nio Switch1 udp-f47d5ddc-2b24-4464-a75e-802f3118883d 
+Dec 02 08:53:29.553 HYPERVISOR: exec_cmd: ethsw set_access_port Switch1 udp-f47d5ddc-2b24-4464-a75e-802f3118883d 1 
