@@ -1,16 +1,64 @@
 {
-    "config_terminal" : {
-        "required_config" : []
+    "exit" : {
+        "command" : [
+            "exit"
+        ]
     },
-    
+    "config_terminal" : {
+        "command" : [
+            "configure terminal"
+        ]
+    },
     "config_interface" : {
         "required_config" : [
             "config_terminal"
+        ],
+        "variables" : [
+            "interface_name"
+        ],
+        "command" : [
+            "interface {interface_name}"
+        ]
+    },
+    "config_ospf" : {
+        "required_config" : [
+            "config_terminal"
+        ],
+        "variables" : [
+            "ospf_process_id",
+            "router_id"
+        ],
+        "command" : [
+            "router ospf {ospf_process_id}",
+            "router-id {router_id}",
+            "exit"
         ]
     },
     "ip_address" : {
         "required_config" : [
             "config_interface"
+        ],
+        "variables" : [
+            "ip_address",
+            "mask"
+        ],
+        "command" : [
+            "ip address {ip_address} {mask}",
+            "no shutdown",
+            "exit"
+        ]
+    },
+    "ospf" : {
+        "required_config" : [
+            "config_ospf",
+            "config_interface"
+        ],
+        "variables" : [
+            "area_id"
+        ],
+        "command" : [
+            "ip ospf area {area_id}",
+            "exit"
         ]
     }
 }

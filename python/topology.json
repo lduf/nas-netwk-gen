@@ -1,0 +1,22 @@
+{
+    "R1" : {
+        "R2" : "gigabitEthernet 1/0",
+        "R4" : "gigabitEthernet 2/0",
+        "R3" : "gigabitEthernet 3/0"
+    },
+    "R2" : {
+        "R1" : "gigabitEthernet 1/0",
+        "R3" : "gigabitEthernet 2/0",
+        "R4" : "gigabitEthernet 3/0"
+    },
+    "R3" : {
+        "R1" : "gigabitEthernet 1/0",
+        "R2" : "gigabitEthernet 2/0",
+        "R4" : "gigabitEthernet 3/0"
+    },
+    "R4" : {
+        "R3" : "gigabitEthernet 1/0",
+        "R1" : "gigabitEthernet 2/0",
+        "R2" : "gigabitEthernet 3/0"
+    }
+}
