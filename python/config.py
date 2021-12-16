@@ -48,7 +48,7 @@ def replace_command_with_values(command, dict_args):
     :return: the command with the modulable parameter replaced by its value
     """
     # get the parameters
-    params = get_commands_parameters([command])
+    params = extract_parameters_from_command(command)
 
     # replace with value(s)
     for param in params:
@@ -61,6 +61,7 @@ def replace_command_with_values(command, dict_args):
 def get_commands_parameters(command_name):
     commands = execute(command_name)
     parameters = set()
+
     for elem in commands:
         parameters |= extract_parameters_from_command(elem)
     return parameters
@@ -85,14 +86,14 @@ def get_command_list():
     return data.keys()
 
 if __name__ == '__main__':
-    command_name = sys.argv[1]
+    command_name = "ip_address"
     # Read the command requirements from the command.json file
 
     # get the parameters to modify for this command
-    parameters_command = get_commands_parameters(command)
+    parameters_command = get_commands_parameters(command_name)
 
     # Create the API to generate the GNS3 configurations command
-    print("Command name: {0}\nCommands for {0}: {1}\nParameters: {2}".format(command_name, commands, parameters_command))
+    print("Command name: {0}\nParameters: {1}".format(command_name, parameters_command))
 
     dict_args = {"mask" : "255.255.255.0", "ip_address" : "127.0.0.1", "interface_name": "GigabitEthernet1/0"}
     final_commands = get_commands("ip_address", dict_args)
