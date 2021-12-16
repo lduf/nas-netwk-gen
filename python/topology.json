@@ -1,22 +1,30 @@
 {
     "R1" : {
-        "R2" : "gigabitEthernet 1/0",
-        "R4" : "gigabitEthernet 2/0",
-        "R3" : "gigabitEthernet 3/0"
+        "interfaces" : {
+            "R2" : "GigabitEthernet1/0",
+            "R4" : "GigabitEthernet2/0",
+            "R3" : "GigabitEthernet3/0"
+        }
     },
     "R2" : {
-        "R1" : "gigabitEthernet 1/0",
-        "R3" : "gigabitEthernet 2/0",
-        "R4" : "gigabitEthernet 3/0"
+        "interfaces" : {
+            "R1" : "GigabitEthernet1/0",
+            "R3" : "GigabitEthernet2/0",
+            "R4" : "GigabitEthernet3/0"
+        }
     },
     "R3" : {
-        "R1" : "gigabitEthernet 1/0",
-        "R2" : "gigabitEthernet 2/0",
-        "R4" : "gigabitEthernet 3/0"
+        "interfaces" : {
+            "R1" : "GigabitEthernet1/0",
+            "R2" : "GigabitEthernet2/0",
+            "R4" : "GigabitEthernet3/0"
+        }
     },
     "R4" : {
-        "R3" : "gigabitEthernet 1/0",
-        "R1" : "gigabitEthernet 2/0",
-        "R2" : "gigabitEthernet 3/0"
+        "interfaces" : {
+            "R3" : "GigabitEthernet1/0",
+            "R1" : "GigabitEthernet2/0",
+            "R2" : "GigabitEthernet3/0"
+        }
     }
 }
