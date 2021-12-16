@@ -58,7 +58,8 @@ def replace_command_with_values(command, dict_args):
     # return the command modified
     return command
 
-def get_commands_parameters(commands):
+def get_commands_parameters(command_name):
+    commands = execute(command_name)
     parameters = set()
     for elem in commands:
         parameters |= extract_parameters_from_command(elem)
@@ -86,10 +87,9 @@ def get_command_list():
 if __name__ == '__main__':
     command_name = sys.argv[1]
     # Read the command requirements from the command.json file
-    commands = execute(command_name)
 
     # get the parameters to modify for this command
-    parameters_command = get_commands_parameters(commands)
+    parameters_command = get_commands_parameters(command)
 
     # Create the API to generate the GNS3 configurations command
     print("Command name: {0}\nCommands for {0}: {1}\nParameters: {2}".format(command_name, commands, parameters_command))
