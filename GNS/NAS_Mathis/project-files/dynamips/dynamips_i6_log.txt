@@ -1,100 +1,44 @@
-Dec 02 08:49:30.426 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
-Dec 02 08:49:30.427 HYPERVISOR: Started on IP = localhost, TCP port = 54209.
-Dec 02 08:49:30.894 HYPERVISOR: exec_cmd: hypervisor version 
-Dec 02 08:49:30.896 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips 
-Dec 02 08:49:30.897 GENERAL: working_dir=C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips
-Dec 02 08:49:30.898 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\c4855de5-2115-459a-990d-515884948e34 
-Dec 02 08:49:30.907 GENERAL: working_dir=C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\c4855de5-2115-459a-990d-515884948e34
-Dec 02 08:49:30.909 HYPERVISOR: exec_cmd: vm create R6 6 c7200 
-Dec 02 08:49:30.915 VM: VM R6 created.
-Dec 02 08:49:30.916 HYPERVISOR: exec_cmd: vm set_con_tcp_port R6 5005 
-Dec 02 08:49:30.917 HYPERVISOR: exec_cmd: c7200 get_mac_addr R6 
-Dec 02 08:49:30.918 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 08:49:30.919 HYPERVISOR: exec_cmd: vm slot_add_binding R6 0 0 C7200-IO-FE 
-Dec 02 08:49:30.922 HYPERVISOR: exec_cmd: vm set_ios R6 C:/Users/33781/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
-Dec 02 08:49:30.923 HYPERVISOR: exec_cmd: vm set_exec_area R6 64 
-Dec 02 08:49:30.925 HYPERVISOR: exec_cmd: vm set_ram R6 512 
-Dec 02 08:49:30.926 HYPERVISOR: exec_cmd: vm set_nvram R6 512 
-Dec 02 08:49:30.928 HYPERVISOR: exec_cmd: vm set_disk0 R6 0 
-Dec 02 08:49:30.930 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 08:49:30.931 HYPERVISOR: exec_cmd: vm slot_add_binding R6 1 0 PA-GE 
-Dec 02 08:49:30.932 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 08:49:30.933 HYPERVISOR: exec_cmd: vm slot_add_binding R6 2 0 PA-GE 
-Dec 02 08:49:30.934 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 08:49:30.935 HYPERVISOR: exec_cmd: vm slot_add_binding R6 3 0 PA-GE 
-Dec 02 08:49:31.022 HYPERVISOR: exec_cmd: vm set_ios R6 C:/Users/33781/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
-Dec 02 08:49:44.550 HYPERVISOR: exec_cmd: vm set_ios R6 C:/Users/33781/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
-Dec 02 08:49:55.290 HYPERVISOR: exec_cmd: vm set_ios R6 C:/Users/33781/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
-Dec 02 08:52:16.168 HYPERVISOR: exec_cmd: nio create_udp udp-051568e6-1a5e-4476-9237-8005f812985b 10040 127.0.0.1 10041 
-Dec 02 08:52:16.424 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R6 1 0 udp-051568e6-1a5e-4476-9237-8005f812985b 
-Dec 02 08:52:16.424 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 08:52:56.505 HYPERVISOR: exec_cmd: nio create_udp udp-15f4fd16-30b7-45f0-828d-e43477ea6c0d 10046 127.0.0.1 10047 
-Dec 02 08:52:56.507 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R6 2 0 udp-15f4fd16-30b7-45f0-828d-e43477ea6c0d 
-Dec 02 08:52:56.507 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 08:53:05.726 HYPERVISOR: exec_cmd: nio create_udp udp-bef191dc-6979-4dc2-a105-7040f8130a79 10050 127.0.0.1 10051 
-Dec 02 08:53:05.729 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R6 3 0 udp-bef191dc-6979-4dc2-a105-7040f8130a79 
-Dec 02 08:53:05.729 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 08:58:41.625 HYPERVISOR: exec_cmd: vm set_ghost_status R6 2 
-Dec 02 08:58:41.626 HYPERVISOR: exec_cmd: vm set_ghost_file R6 C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
-Dec 02 08:58:41.627 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 08:58:41.627 HYPERVISOR: exec_cmd: vm set_config R6 configs\i6_startup-config.cfg 
-Dec 02 08:58:41.628 HYPERVISOR: exec_cmd: vm start R6 
-Dec 02 08:59:12.069 HYPERVISOR: exec_cmd: vm extract_config R6 
-Dec 02 09:08:03.733 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 09:08:03.733 HYPERVISOR: exec_cmd: vm stop R6 
-Dec 02 09:08:03.864 VM: VM R6 shutdown.
-Dec 02 09:08:03.865 HYPERVISOR: exec_cmd: vm extract_config R6 
-Dec 02 09:08:07.263 HYPERVISOR: exec_cmd: vm set_ghost_status R6 2 
-Dec 02 09:08:07.265 HYPERVISOR: exec_cmd: vm set_ghost_file R6 C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
-Dec 02 09:08:07.266 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 09:08:07.266 HYPERVISOR: exec_cmd: vm set_config R6 configs\i6_startup-config.cfg 
-Dec 02 09:08:07.267 HYPERVISOR: exec_cmd: vm start R6 
-Dec 02 09:17:48.246 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 09:17:48.246 HYPERVISOR: exec_cmd: vm stop R6 
-Dec 02 09:17:48.458 VM: VM R6 shutdown.
-Dec 02 09:17:48.459 HYPERVISOR: exec_cmd: vm extract_config R6 
-Dec 02 09:23:03.461 HYPERVISOR: exec_cmd: vm set_ghost_status R6 2 
-Dec 02 09:23:03.463 HYPERVISOR: exec_cmd: vm set_ghost_file R6 C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
-Dec 02 09:23:03.463 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 09:23:03.464 HYPERVISOR: exec_cmd: vm set_config R6 configs\i6_startup-config.cfg 
-Dec 02 09:23:03.464 HYPERVISOR: exec_cmd: vm start R6 
-Dec 02 09:24:48.057 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 09:24:48.057 HYPERVISOR: exec_cmd: vm stop R6 
-Dec 02 09:24:48.277 VM: VM R6 shutdown.
-Dec 02 09:24:48.278 HYPERVISOR: exec_cmd: vm extract_config R6 
-Dec 02 09:28:49.563 HYPERVISOR: exec_cmd: vm set_ghost_status R6 2 
-Dec 02 09:28:49.564 HYPERVISOR: exec_cmd: vm set_ghost_file R6 C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
-Dec 02 09:28:49.564 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 09:28:49.565 HYPERVISOR: exec_cmd: vm set_config R6 configs\i6_startup-config.cfg 
-Dec 02 09:28:49.566 HYPERVISOR: exec_cmd: vm start R6 
-Dec 02 09:37:00.450 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 09:37:00.450 HYPERVISOR: exec_cmd: vm stop R6 
-Dec 02 09:37:00.645 VM: VM R6 shutdown.
-Dec 02 09:37:00.645 HYPERVISOR: exec_cmd: vm extract_config R6 
-Dec 02 09:37:36.785 HYPERVISOR: exec_cmd: vm set_ghost_status R6 2 
-Dec 02 09:37:36.786 HYPERVISOR: exec_cmd: vm set_ghost_file R6 C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
-Dec 02 09:37:36.787 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 09:37:36.787 HYPERVISOR: exec_cmd: vm set_config R6 configs\i6_startup-config.cfg 
-Dec 02 09:37:36.788 HYPERVISOR: exec_cmd: vm start R6 
-Dec 02 09:40:55.898 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 09:40:55.898 HYPERVISOR: exec_cmd: vm stop R6 
-Dec 02 09:40:56.107 VM: VM R6 shutdown.
-Dec 02 09:40:56.110 HYPERVISOR: exec_cmd: vm extract_config R6 
-Dec 02 09:41:00.076 HYPERVISOR: exec_cmd: vm set_ghost_status R6 2 
-Dec 02 09:41:00.076 HYPERVISOR: exec_cmd: vm set_ghost_file R6 C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
-Dec 02 09:41:00.076 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 09:41:00.077 HYPERVISOR: exec_cmd: vm set_config R6 configs\i6_startup-config.cfg 
-Dec 02 09:41:00.077 HYPERVISOR: exec_cmd: vm start R6 
-Dec 02 09:42:59.430 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 09:42:59.430 HYPERVISOR: exec_cmd: vm stop R6 
-Dec 02 09:42:59.685 VM: VM R6 shutdown.
-Dec 02 09:42:59.686 HYPERVISOR: exec_cmd: vm extract_config R6 
-Dec 02 09:43:04.114 HYPERVISOR: exec_cmd: vm set_ghost_status R6 2 
-Dec 02 09:43:04.115 HYPERVISOR: exec_cmd: vm set_ghost_file R6 C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
-Dec 02 09:43:04.116 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 09:43:04.117 HYPERVISOR: exec_cmd: vm set_config R6 configs\i6_startup-config.cfg 
-Dec 02 09:43:04.117 HYPERVISOR: exec_cmd: vm start R6 
-Dec 02 09:44:26.660 HYPERVISOR: exec_cmd: vm get_status R6 
-Dec 02 09:44:26.660 HYPERVISOR: exec_cmd: vm stop R6 
-Dec 02 09:44:26.926 VM: VM R6 shutdown.
-Dec 02 09:44:26.929 HYPERVISOR: exec_cmd: vm extract_config R6 
+Dec 09 09:24:10.620 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Dec 09 09:24:10.621 HYPERVISOR: Started on IP = localhost, TCP port = 54032.
+Dec 09 09:24:11.112 HYPERVISOR: exec_cmd: hypervisor version 
+Dec 09 09:24:11.113 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips 
+Dec 09 09:24:11.113 GENERAL: working_dir=C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips
+Dec 09 09:24:11.113 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\c4855de5-2115-459a-990d-515884948e34 
+Dec 09 09:24:11.113 GENERAL: working_dir=C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\c4855de5-2115-459a-990d-515884948e34
+Dec 09 09:24:11.114 HYPERVISOR: exec_cmd: vm create R6 6 c7200 
+Dec 09 09:24:11.115 VM: VM R6 created.
+Dec 09 09:24:11.116 HYPERVISOR: exec_cmd: vm set_con_tcp_port R6 5005 
+Dec 09 09:24:11.116 HYPERVISOR: exec_cmd: c7200 get_mac_addr R6 
+Dec 09 09:24:11.116 HYPERVISOR: exec_cmd: vm get_status R6 
+Dec 09 09:24:11.116 HYPERVISOR: exec_cmd: vm slot_add_binding R6 0 0 C7200-IO-FE 
+Dec 09 09:24:11.117 HYPERVISOR: exec_cmd: vm set_disk0 R6 0 
+Dec 09 09:24:11.117 HYPERVISOR: exec_cmd: vm set_exec_area R6 64 
+Dec 09 09:24:11.118 HYPERVISOR: exec_cmd: vm set_ios R6 C:/Users/33781/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Dec 09 09:24:11.118 HYPERVISOR: exec_cmd: c7200 set_mac_addr R6 ca06.2bd4.0000 
+Dec 09 09:24:11.119 HYPERVISOR: exec_cmd: vm set_nvram R6 512 
+Dec 09 09:24:11.119 HYPERVISOR: exec_cmd: vm set_ram R6 512 
+Dec 09 09:24:11.119 HYPERVISOR: exec_cmd: vm get_status R6 
+Dec 09 09:24:11.119 HYPERVISOR: exec_cmd: vm slot_add_binding R6 1 0 PA-GE 
+Dec 09 09:24:11.120 HYPERVISOR: exec_cmd: vm get_status R6 
+Dec 09 09:24:11.120 HYPERVISOR: exec_cmd: vm slot_add_binding R6 2 0 PA-GE 
+Dec 09 09:24:11.120 HYPERVISOR: exec_cmd: vm get_status R6 
+Dec 09 09:24:11.121 HYPERVISOR: exec_cmd: vm slot_add_binding R6 3 0 PA-GE 
+Dec 09 09:24:13.877 HYPERVISOR: exec_cmd: nio create_udp udp-f61119f6-d479-4014-912e-e9c177329e8d 2034 127.0.0.1 2035 
+Dec 09 09:24:14.132 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R6 1 0 udp-f61119f6-d479-4014-912e-e9c177329e8d 
+Dec 09 09:24:14.133 HYPERVISOR: exec_cmd: vm get_status R6 
+Dec 09 09:24:14.247 HYPERVISOR: exec_cmd: nio create_udp udp-1fb0f63e-166d-4508-a6ff-3ab2c97c0915 2046 127.0.0.1 2047 
+Dec 09 09:24:14.249 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R6 2 0 udp-1fb0f63e-166d-4508-a6ff-3ab2c97c0915 
+Dec 09 09:24:14.250 HYPERVISOR: exec_cmd: vm get_status R6 
+Dec 09 09:24:14.296 HYPERVISOR: exec_cmd: nio create_udp udp-e9b45222-ef23-492c-aff4-df5401fdd144 2051 127.0.0.1 2052 
+Dec 09 09:24:14.298 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R6 3 0 udp-e9b45222-ef23-492c-aff4-df5401fdd144 
+Dec 09 09:24:14.299 HYPERVISOR: exec_cmd: vm get_status R6 
+Dec 09 09:24:21.991 HYPERVISOR: exec_cmd: vm set_ghost_status R6 2 
+Dec 09 09:24:21.992 HYPERVISOR: exec_cmd: vm set_ghost_file R6 C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
+Dec 09 09:24:21.992 HYPERVISOR: exec_cmd: vm get_status R6 
+Dec 09 09:24:21.993 HYPERVISOR: exec_cmd: vm set_config R6 configs\i6_startup-config.cfg 
+Dec 09 09:24:21.993 HYPERVISOR: exec_cmd: vm start R6 
+Dec 09 09:24:52.311 HYPERVISOR: exec_cmd: vm extract_config R6 
+Dec 09 09:29:21.373 HYPERVISOR: exec_cmd: vm get_status R6 
+Dec 09 09:29:21.374 HYPERVISOR: exec_cmd: vm stop R6 
+Dec 09 09:29:21.523 VM: VM R6 shutdown.
+Dec 09 09:29:21.524 HYPERVISOR: exec_cmd: vm extract_config R6 
