@@ -35,17 +35,28 @@ def extract_parameters_from_command(regex, command):
 
     return set(parameters)
 
+def replace_commands_with_values(regex, commands, dict_args):
+    for i in range(len(commands)):
+        command = commands[i]
+        command = replace_command_with_values(regex, command, dict_args)
+        commands[i] = command
+    return commands
 
-def replace_with_value(command):
+def replace_command_with_values(regex, command, dict_args):
     """
     :param command: a command with a modulable parameter. ex: router ospf {ospf_process_id}
     :return: the command with the modulable parameter replaced by its value
     """
+    # get the parameters
+    params = get_commands_parameters(regex, [command])
 
     # replace with value(s)
+    for param in params:
+        p = '{' + param + '}'
+        command = command.replace(p, dict_args[param])
 
     # return the command modified
-    pass
+    return command
 
 def get_commands_parameters(regex, commands):
     parameters = set()
@@ -53,12 +64,16 @@ def get_commands_parameters(regex, commands):
         parameters |= extract_parameters_from_command(regex, elem)
     return parameters
 
-
 def get_command():
     # Read the command requirements from the command.json file
     with open('command.json') as json_file:
         data = json.load(json_file)
         return data
+
+def get_commands(command_name, dict_args, regex=r'\{(.*?)\}'):
+    commands_empty = execute(command_name)
+    commands = replace_commands_with_values(regex, commands_empty, dict_args)
+    return commands
 
 if __name__ == '__main__':
     command_name = sys.argv[1]
@@ -69,7 +84,9 @@ if __name__ == '__main__':
     regex_command = r'\{(.*?)\}'
     parameters_command = get_commands_parameters(regex_command, commands)
 
-    # generate the commands completed and return them
-
     # Create the API to generate the GNS3 configurations command
     print("Command name: {0}\nCommands for {0}: {1}\nParameters: {2}".format(command_name, commands, parameters_command))
+
+    dict_args = {"mask" : "255.255.255.0", "ip_address" : "127.0.0.1", "interface_name": "GigabitEthernet1/0"}
+    final_commands = get_commands("ip_address", dict_args)
+    print("Command name: {0}\nCommands for {0}: {1}".format(command_name, final_commands))
