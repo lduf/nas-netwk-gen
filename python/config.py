@@ -24,7 +24,7 @@ def execute(command):
     return data["command"]
 
 
-def extract_parameters_from_command(regex, command):
+def extract_parameters_from_command(command, regex='\{(.*?)\}'):
     """
     Extract the parameters to ask to the router
     :param command: a command for a certain protocol or something similar
@@ -35,20 +35,20 @@ def extract_parameters_from_command(regex, command):
 
     return set(parameters)
 
-def replace_commands_with_values(regex, commands, dict_args):
+def replace_commands_with_values(commands, dict_args):
     for i in range(len(commands)):
         command = commands[i]
-        command = replace_command_with_values(regex, command, dict_args)
+        command = replace_command_with_values(command, dict_args)
         commands[i] = command
     return commands
 
-def replace_command_with_values(regex, command, dict_args):
+def replace_command_with_values(command, dict_args):
     """
     :param command: a command with a modulable parameter. ex: router ospf {ospf_process_id}
     :return: the command with the modulable parameter replaced by its value
     """
     # get the parameters
-    params = get_commands_parameters(regex, [command])
+    params = extract_parameters_from_command(command)
 
     # replace with value(s)
     for param in params:
@@ -58,10 +58,12 @@ def replace_command_with_values(regex, command, dict_args):
     # return the command modified
     return command
 
-def get_commands_parameters(commands, regex=r'\{(.*?)\}'):
+def get_commands_parameters(command_name):
+    commands = execute(command_name)
     parameters = set()
+
     for elem in commands:
-        parameters |= extract_parameters_from_command(regex, elem)
+        parameters |= extract_parameters_from_command(elem)
     return parameters
 
 def get_command():
@@ -70,9 +72,9 @@ def get_command():
         data = json.load(json_file)
     return data
 
-def get_commands(command_name, dict_args, regex=r'\{(.*?)\}'):
+def get_commands(command_name, dict_args):
     commands_empty = execute(command_name)
-    commands = replace_commands_with_values(regex, commands_empty, dict_args)
+    commands = replace_commands_with_values(commands_empty, dict_args)
     return commands
 
 def get_command_list():
@@ -84,15 +86,14 @@ def get_command_list():
     return data.keys()
 
 if __name__ == '__main__':
-    command_name = sys.argv[1]
+    command_name = "ip_address"
     # Read the command requirements from the command.json file
-    commands = execute(command_name)
 
     # get the parameters to modify for this command
-    parameters_command = get_commands_parameters(commands)
+    parameters_command = get_commands_parameters(command_name)
 
     # Create the API to generate the GNS3 configurations command
-    print("Command name: {0}\nCommands for {0}: {1}\nParameters: {2}".format(command_name, commands, parameters_command))
+    print("Command name: {0}\nParameters: {1}".format(command_name, parameters_command))
 
     dict_args = {"mask" : "255.255.255.0", "ip_address" : "127.0.0.1", "interface_name": "GigabitEthernet1/0"}
     final_commands = get_commands("ip_address", dict_args)
