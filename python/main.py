@@ -15,10 +15,12 @@ def routeur_number(routeur_string):
 if __name__ == '__main__':
     topology = read_data("topology.json")
     ip_topology = ip_generator.get_ip_topology("topology.json")
-    
-    for router in topology:
-        R = routeur_number(router)
+    i = 1
+    for router in ip_topology:
+        print("Router {}".format(i))
+        i+=1
         for neighbor in router:
-           config.get_commands("ip_address", {"mask" : "255.255.255.0", "ip_address" : neighbor["ip"], "interface_name" : neighbor["interface"]})
+            commands = config.get_commands("ip_address", neighbor)
+            print(commands)
 
-    print(ip_topology)
+print(config.get_commands_parameters("ospf"))
