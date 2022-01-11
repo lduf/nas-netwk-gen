@@ -1,10 +1,18 @@
 {
+    "enable" : {
+        "command" : [
+            "enable"
+        ]
+    },
     "exit" : {
         "command" : [
             "exit"
         ]
     },
     "config_terminal" : {
+        "required_config" : [
+            "enable"  
+        ],
         "command" : [
             "configure terminal"
         ]
@@ -58,6 +66,26 @@
         ],
         "command" : [
             "ip ospf area {area_id}",
+            "exit"
+        ]
+    },
+    "mpls_global" : {
+        "required_config": [
+            "config_terminal"
+        ],
+        "command": [
+            "mpls ip",
+            "mpls label protocol ldp",
+            "mpls ldp autoconfig",
+            "exit"
+        ]
+    },
+    "mpls_specific" : {
+        "required_config" : [
+            "config_interface"
+        ],
+        "command": [
+            "mpls ip",
             "exit"
         ]
     }
