@@ -80,7 +80,7 @@
             "exit"
         ]
     },
-    "mpls_specific" : {
+    "mpls" : {
         "required_config" : [
             "config_interface"
         ],

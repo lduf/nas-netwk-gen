@@ -5,6 +5,7 @@ import ip_generator
 import config
 from tabulate import tabulate
 import json
+import sys
 
 selected_interfaces = set()
 """
@@ -38,11 +39,14 @@ def routers(topology):
 def interfaces(topology):
     interface_list = []
     for interface in topology:
-        interface_list.append([topology[interface], interface])
+        if interface != "Loopback0":
+            interface_list.append([interface,topology[interface]["neighbor"]["name"],topology[interface]["ip"]["ip_address"],topology[interface]["protocols"]])
+        else :
+            interface_list.append([interface,"Ø",topology[interface]["ip"]["ip_address"], "Ø"])
     return interface_list
 
 def protocols():
-    protocols = ["ospf", "ip_address"]
+    protocols = ["ospf", "mpls"]
     return protocols
 
 def echo(text):
@@ -52,8 +56,18 @@ def echo(text):
     input("\n{} is selected\n".format(text))
    
 
+def enable(router, interface, protocol):
+    global selected_interfaces, topo
+    selected_interfaces.add(interface)
+    print(selected_interfaces)
+    print(f"Get params for {protocol} on {interface}")
+    params = config.get_commands_parameters(protocol)
+    print(params)
+    topo[router]["interfaces"][interface]["protocols"][protocol] = params
+    Screen().input("Please, press [enter] to continue...")
 
-def action(router, param):
+    
+def action(router, param, protocol):
     global selected_interfaces
     if param == "interface_name" :
          # Create the root menu
@@ -64,7 +78,7 @@ def action(router, param):
         
         for interface in [x[0] for x in interfaces(topo[router]["interfaces"])] :
             interface = f"* {interface}" if interface in selected_interfaces else interface
-            menu.append_item(FunctionItem(interface, echo, args=[interface]))
+            menu.append_item(FunctionItem(interface, enable, args=[router,interface, protocol]))
         # Show the menu
         menu.show()
         
@@ -87,7 +101,7 @@ if __name__ == '__main__':
         # Creating a submenu for each router
         router_menu = SelectionMenu("")
         router_menu.title = f"{router} options"
-        router_menu.prologue_text =tabulate(interfaces(topo[router]["interfaces"]), headers=["Interface", "Router"])
+        router_menu.prologue_text =tabulate(interfaces(topo[router]["interfaces"]), headers=["Interface", "Router", "IP", "Protocols"])
         router_submenu = SubmenuItem(router, router_menu, router_selection_menu)
         router_selection_menu.append_item(router_submenu)
 
@@ -99,7 +113,7 @@ if __name__ == '__main__':
             protocol_menu.title = f"{protocol} options"
             parameters = config.get_commands_parameters(protocol)
             for param in parameters:
-                param_menu = FunctionItem(param, action, args=[router, param])
+                param_menu = FunctionItem(param, action, args=[router, param, protocol])
                 protocol_menu.append_item(param_menu)
             protocol_submenu = SubmenuItem(protocol, protocol_menu, protocols_selection_menu)
             protocols_selection_menu.append_item(protocol_submenu)
@@ -111,10 +125,6 @@ if __name__ == '__main__':
 
         router_menu.append_item(protocols_selection_submenu)
 
-        
-
-    
-    
 
     submenu_router_selection_menu = SubmenuItem("Choose a router", router_selection_menu, menu)
     submenu_router_selection_menu.should_exit = False
@@ -125,5 +135,9 @@ if __name__ == '__main__':
     # Finally, we call show to show the menu and allow the user to interact
     menu.show()
     menu.join()
-    print(router_selection_menu.selected_option)
+    jsonString = json.dumps(topo, indent=4)
+    fileName = sys.argv[1] if len(sys.argv) > 1 else "topology_updt.json"
+    file = open(fileName, "w")
+    file.write(jsonString)
+    file.close()
     
