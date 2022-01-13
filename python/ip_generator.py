@@ -30,6 +30,7 @@ def generate_ip_topology(topology_file):
 
         # pour chaque interface
         for interface in data_json[router]["interfaces"].keys():
+            # récupérer les informations sur le voisin
             router_neighbor = data_json[router]["interfaces"][interface]["neighbor"]
             router_neighbor_interface = router_neighbor["interface"]
             router_neighbor_name = router_neighbor["name"]
