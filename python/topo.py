@@ -18,13 +18,22 @@ def write_topology(links_summary, nodes_summary):
         topo[nodes[0]] = {}
     #(<class 'dict'>, {'R1': {}, 'R2': {}, 'R3': {}, 'R4': {}, 'R5': {}, 'R6': {}, 'R7': {}, 'R8': {}})
 
+    for nodes in nodes_summary :
+        topo[nodes[0]]["router_id"] = nodes[3]
+
     for link in links_summary :
         topo[link[0]]["interfaces"] = {}
         topo[link[2]]["interfaces"] = {}
 
     for link in links_summary :
-        topo[link[0]]["interfaces"][link[2]] = link[1]
-        topo[link[2]]["interfaces"][link[0]] = link[3]
+        topo[link[0]]["interfaces"][link[1]] = {}
+        topo[link[0]]["interfaces"][link[1]]["neighbor"] = link[0]
+        topo[link[0]]["interfaces"][link[1]]["protocols"] = {}
+        topo[link[0]]["interfaces"][link[1]]["ip"] = {}
+        topo[link[2]]["interfaces"][link[3]] = {}
+        topo[link[2]]["interfaces"][link[3]]["neighbor"] = link[2]
+        topo[link[2]]["interfaces"][link[3]]["protocols"] = {}
+        topo[link[2]]["interfaces"][link[3]]["ip"] = {}
 
     print(topo)
     
@@ -50,6 +59,8 @@ lab.open()
 
 links_summary = lab.links_summary(is_print=False)
 nodes_summary = lab.nodes_summary(is_print=False)
+
+print(nodes_summary)
 
 write_topology(links_summary, nodes_summary)
 

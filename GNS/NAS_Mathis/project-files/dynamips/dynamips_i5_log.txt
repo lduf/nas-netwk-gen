@@ -1,34 +1,34 @@
-Jan 11 13:55:50.139 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
-Jan 11 13:55:50.139 HYPERVISOR: Started on TCP port = 57580.
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: hypervisor version 
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips 
-Jan 11 13:55:50.625 GENERAL: working_dir=C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\a74b8cf1-7819-4b5b-943a-fbe00b225172 
-Jan 11 13:55:50.625 GENERAL: working_dir=C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\a74b8cf1-7819-4b5b-943a-fbe00b225172
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: vm create R5 5 c7200 
-Jan 11 13:55:50.625 VM: VM R5 created.
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: vm set_con_tcp_port R5 5004 
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: c7200 get_mac_addr R5 
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: vm get_status R5 
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: vm slot_add_binding R5 0 0 C7200-IO-FE 
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: vm set_disk0 R5 0 
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: vm set_exec_area R5 64 
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: vm set_ios R5 C:/Users/33781/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: c7200 set_mac_addr R5 ca05.3370.0000 
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: vm set_nvram R5 512 
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: vm set_ram R5 512 
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: vm get_status R5 
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: vm slot_add_binding R5 1 0 PA-GE 
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: vm get_status R5 
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: vm slot_add_binding R5 2 0 PA-GE 
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: vm get_status R5 
-Jan 11 13:55:50.625 HYPERVISOR: exec_cmd: vm slot_add_binding R5 3 0 PA-GE 
-Jan 11 13:55:53.576 HYPERVISOR: exec_cmd: nio create_udp udp-e29bea45-9b6e-4a9b-b967-5385e1474cb5 2020 127.0.0.1 2021 
-Jan 11 13:55:53.817 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R5 1 0 udp-e29bea45-9b6e-4a9b-b967-5385e1474cb5 
-Jan 11 13:55:53.817 HYPERVISOR: exec_cmd: vm get_status R5 
-Jan 11 13:55:53.865 HYPERVISOR: exec_cmd: nio create_udp udp-4a360434-a155-46db-ae2f-17d7f4c6e28c 2026 127.0.0.1 2027 
-Jan 11 13:55:53.880 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R5 0 0 udp-4a360434-a155-46db-ae2f-17d7f4c6e28c 
-Jan 11 13:55:53.880 HYPERVISOR: exec_cmd: vm get_status R5 
-Jan 11 13:55:54.686 HYPERVISOR: exec_cmd: nio create_udp udp-b317f5cc-e7ab-423e-9a51-96111481ad8e 2057 127.0.0.1 2058 
-Jan 11 13:55:54.702 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R5 2 0 udp-b317f5cc-e7ab-423e-9a51-96111481ad8e 
-Jan 11 13:55:54.702 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 13 08:11:01.663 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Jan 13 08:11:01.664 HYPERVISOR: Started on TCP port = 59649.
+Jan 13 08:11:02.170 HYPERVISOR: exec_cmd: hypervisor version 
+Jan 13 08:11:02.170 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips 
+Jan 13 08:11:02.171 GENERAL: working_dir=C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips
+Jan 13 08:11:02.171 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\a74b8cf1-7819-4b5b-943a-fbe00b225172 
+Jan 13 08:11:02.172 GENERAL: working_dir=C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Mathis\project-files\dynamips\a74b8cf1-7819-4b5b-943a-fbe00b225172
+Jan 13 08:11:02.172 HYPERVISOR: exec_cmd: vm create R5 5 c7200 
+Jan 13 08:11:02.174 VM: VM R5 created.
+Jan 13 08:11:02.175 HYPERVISOR: exec_cmd: vm set_con_tcp_port R5 5004 
+Jan 13 08:11:02.175 HYPERVISOR: exec_cmd: c7200 get_mac_addr R5 
+Jan 13 08:11:02.176 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 13 08:11:02.176 HYPERVISOR: exec_cmd: vm slot_add_binding R5 0 0 C7200-IO-FE 
+Jan 13 08:11:02.177 HYPERVISOR: exec_cmd: vm set_disk0 R5 0 
+Jan 13 08:11:02.177 HYPERVISOR: exec_cmd: vm set_exec_area R5 64 
+Jan 13 08:11:02.178 HYPERVISOR: exec_cmd: vm set_ios R5 C:/Users/33781/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 13 08:11:02.179 HYPERVISOR: exec_cmd: c7200 set_mac_addr R5 ca05.3370.0000 
+Jan 13 08:11:02.179 HYPERVISOR: exec_cmd: vm set_nvram R5 512 
+Jan 13 08:11:02.180 HYPERVISOR: exec_cmd: vm set_ram R5 512 
+Jan 13 08:11:02.180 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 13 08:11:02.180 HYPERVISOR: exec_cmd: vm slot_add_binding R5 1 0 PA-GE 
+Jan 13 08:11:02.181 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 13 08:11:02.181 HYPERVISOR: exec_cmd: vm slot_add_binding R5 2 0 PA-GE 
+Jan 13 08:11:02.181 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 13 08:11:02.181 HYPERVISOR: exec_cmd: vm slot_add_binding R5 3 0 PA-GE 
+Jan 13 08:11:05.150 HYPERVISOR: exec_cmd: nio create_udp udp-da42f7e3-1e7b-48e9-af64-3951a992337a 2020 127.0.0.1 2021 
+Jan 13 08:11:05.402 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R5 1 0 udp-da42f7e3-1e7b-48e9-af64-3951a992337a 
+Jan 13 08:11:05.403 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 13 08:11:05.460 HYPERVISOR: exec_cmd: nio create_udp udp-c5c86c47-b073-4478-9e41-956102ca0eac 2026 127.0.0.1 2027 
+Jan 13 08:11:05.462 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R5 0 0 udp-c5c86c47-b073-4478-9e41-956102ca0eac 
+Jan 13 08:11:05.463 HYPERVISOR: exec_cmd: vm get_status R5 
+Jan 13 08:11:06.263 HYPERVISOR: exec_cmd: nio create_udp udp-1ce9d003-2d2a-4278-9fc7-90a18c4a1025 2057 127.0.0.1 2058 
+Jan 13 08:11:06.265 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R5 2 0 udp-1ce9d003-2d2a-4278-9fc7-90a18c4a1025 
+Jan 13 08:11:06.266 HYPERVISOR: exec_cmd: vm get_status R5 
