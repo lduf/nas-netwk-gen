@@ -63,7 +63,7 @@ def enable(router, interface, protocol):
     print(f"Get params for {protocol} on {interface}")
     params = config.get_commands_parameters(protocol)
     print(params)
-    topo[router]["interfaces"][interface]["protocols"][protocol] = params
+    topo[router]["interfaces"][interface]["protocols"].append(protocol)
     Screen().input("Please, press [enter] to continue...")
 
     
@@ -77,8 +77,9 @@ def action(router, param, protocol):
                            exit_option_text='Save')  # Customize the exit text
         
         for interface in [x[0] for x in interfaces(topo[router]["interfaces"])] :
-            interface = f"* {interface}" if interface in selected_interfaces else interface
-            menu.append_item(FunctionItem(interface, enable, args=[router,interface, protocol]))
+            if interface != "Loopback0":
+                interface = f"* {interface}" if interface in selected_interfaces else interface
+                menu.append_item(FunctionItem(interface, enable, args=[router,interface, protocol]))
         # Show the menu
         menu.show()
         
