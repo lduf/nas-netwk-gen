@@ -43,7 +43,6 @@ def matrix_topology(param_topology):
 def generate_ip(matrix_topology):
     N = len(matrix_topology)
     ip_base = "10.0.{}.{}"
-    netmask = "255.255.255.0"
     ip_topology = [[0 for j in range(N)] for i in range(N)]
     ip_domains = [i+1 for i in range(int(N**2/2))]
     for router in range(N):
@@ -57,9 +56,11 @@ def generate_ip(matrix_topology):
     return ip_topology
    
 def get_ip_topology(topology_file):
+    netmask = "255.255.255.0"
+    loopback_netmask = "255.255.255.255"
     topology = matrix_topology(read_data(topology_file))
     ip_topology = generate_ip(topology)
-    return [[{"interface" : topology[i][j], "ip" : ip_topology[i][j]} for j in range(len(ip_topology[i]))] for i in range(len(ip_topology))]
+    return [[{"interface_name" : topology[i][j], "ip_address" : ip_topology[i][j], "mask" : loopback_netmask if i == j else netmask} for j in range(len(ip_topology[i]))] for i in range(len(ip_topology))]
 
 if __name__ == '__main__':
      # Read the command requirements from the command.json file
