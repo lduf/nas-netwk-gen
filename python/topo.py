@@ -27,11 +27,11 @@ def write_topology(links_summary, nodes_summary):
 
     for link in links_summary :
         topo[link[0]]["interfaces"][link[1]] = {}
-        topo[link[0]]["interfaces"][link[1]]["neighbor"] = link[0]
+        topo[link[0]]["interfaces"][link[1]]["neighbor"] = link[2]
         topo[link[0]]["interfaces"][link[1]]["protocols"] = {}
         topo[link[0]]["interfaces"][link[1]]["ip"] = {}
         topo[link[2]]["interfaces"][link[3]] = {}
-        topo[link[2]]["interfaces"][link[3]]["neighbor"] = link[2]
+        topo[link[2]]["interfaces"][link[3]]["neighbor"] = link[0]
         topo[link[2]]["interfaces"][link[3]]["protocols"] = {}
         topo[link[2]]["interfaces"][link[3]]["ip"] = {}
 

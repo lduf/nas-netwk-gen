@@ -3,17 +3,17 @@
         "router_id": "996e4fd9-9ca0-4b18-9ac5-8d5d14a58192",
         "interfaces": {
             "GigabitEthernet2/0": {
-                "neighbor": "R1",
+                "neighbor": "R3",
                 "protocols": {},
                 "ip": {}
             },
             "GigabitEthernet1/0": {
-                "neighbor": "R1",
+                "neighbor": "R2",
                 "protocols": {},
                 "ip": {}
             },
             "GigabitEthernet3/0": {
-                "neighbor": "R1",
+                "neighbor": "R5",
                 "protocols": {},
                 "ip": {}
             }
@@ -23,17 +23,17 @@
         "router_id": "efc33e42-02f4-4f4a-953e-2f811684a890",
         "interfaces": {
             "GigabitEthernet1/0": {
-                "neighbor": "R2",
+                "neighbor": "R1",
                 "protocols": {},
                 "ip": {}
             },
             "FastEthernet0/0": {
-                "neighbor": "R2",
+                "neighbor": "R5",
                 "protocols": {},
                 "ip": {}
             },
             "GigabitEthernet2/0": {
-                "neighbor": "R2",
+                "neighbor": "R4",
                 "protocols": {},
                 "ip": {}
             }
@@ -43,17 +43,17 @@
         "router_id": "e01ee11f-f9c6-4753-ae9e-ae7673a942d6",
         "interfaces": {
             "GigabitEthernet1/0": {
-                "neighbor": "R3",
+                "neighbor": "R1",
                 "protocols": {},
                 "ip": {}
             },
             "GigabitEthernet3/0": {
-                "neighbor": "R3",
+                "neighbor": "R4",
                 "protocols": {},
                 "ip": {}
             },
             "GigabitEthernet2/0": {
-                "neighbor": "R3",
+                "neighbor": "R6",
                 "protocols": {},
                 "ip": {}
             }
@@ -63,17 +63,17 @@
         "router_id": "380a5cd9-63b9-451d-a830-03fbc18a4db4",
         "interfaces": {
             "GigabitEthernet3/0": {
-                "neighbor": "R4",
+                "neighbor": "R3",
                 "protocols": {},
                 "ip": {}
             },
             "GigabitEthernet1/0": {
-                "neighbor": "R4",
+                "neighbor": "R2",
                 "protocols": {},
                 "ip": {}
             },
             "GigabitEthernet2/0": {
-                "neighbor": "R4",
+                "neighbor": "R6",
                 "protocols": {},
                 "ip": {}
             }
@@ -83,17 +83,17 @@
         "router_id": "a74b8cf1-7819-4b5b-943a-fbe00b225172",
         "interfaces": {
             "GigabitEthernet1/0": {
-                "neighbor": "R5",
+                "neighbor": "R1",
                 "protocols": {},
                 "ip": {}
             },
             "FastEthernet0/0": {
-                "neighbor": "R5",
+                "neighbor": "R2",
                 "protocols": {},
                 "ip": {}
             },
             "GigabitEthernet2/0": {
-                "neighbor": "R5",
+                "neighbor": "R7",
                 "protocols": {},
                 "ip": {}
             }
@@ -103,17 +103,17 @@
         "router_id": "c4855de5-2115-459a-990d-515884948e34",
         "interfaces": {
             "GigabitEthernet1/0": {
-                "neighbor": "R6",
+                "neighbor": "R3",
                 "protocols": {},
                 "ip": {}
             },
             "GigabitEthernet2/0": {
-                "neighbor": "R6",
+                "neighbor": "R4",
                 "protocols": {},
                 "ip": {}
             },
             "GigabitEthernet3/0": {
-                "neighbor": "R6",
+                "neighbor": "R8",
                 "protocols": {},
                 "ip": {}
             }
@@ -123,12 +123,12 @@
         "router_id": "6343c9d7-2486-430c-9768-d459bb3858cd",
         "interfaces": {
             "GigabitEthernet1/0": {
-                "neighbor": "R7",
+                "neighbor": "R5",
                 "protocols": {},
                 "ip": {}
             },
             "FastEthernet0/0": {
-                "neighbor": "R7",
+                "neighbor": "R8",
                 "protocols": {},
                 "ip": {}
             }
@@ -138,12 +138,12 @@
         "router_id": "aede8e90-c380-45a7-b4d7-5abb18f0b938",
         "interfaces": {
             "GigabitEthernet1/0": {
-                "neighbor": "R8",
+                "neighbor": "R6",
                 "protocols": {},
                 "ip": {}
             },
             "FastEthernet0/0": {
-                "neighbor": "R8",
+                "neighbor": "R7",
                 "protocols": {},
                 "ip": {}
             }
