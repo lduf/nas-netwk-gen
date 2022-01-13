@@ -59,13 +59,7 @@ def echo(text):
 def enable(router, interface, protocol):
     global selected_interfaces, topo
     selected_interfaces.add(interface)
-    print(selected_interfaces)
-    print(f"Get params for {protocol} on {interface}")
-    params = config.get_commands_parameters(protocol)
-    print(params)
     topo[router]["interfaces"][interface]["protocols"].append(protocol)
-    Screen().input("Please, press [enter] to continue...")
-
     
 def action(router, param, protocol):
     global selected_interfaces
@@ -87,8 +81,7 @@ def action(router, param, protocol):
         print("\nHello from action {}!!!\n".format(router))
         var = input("Please, fill the detail for {} : \n >>".format(param))
         print("\n{} is {}\n".format(param, var))
-
-    Screen().input("Please, press [enter] to continue...")
+        topo[router]["parameters"][param] = var
 
 
 if __name__ == '__main__':
