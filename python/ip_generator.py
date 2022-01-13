@@ -1,71 +1,68 @@
 #!/usr/bin/python
 import json
 import sys
+import tabulate
 """
 This file is used to generate ip addresses for a given router.
 """
 
-
-
 def read_data(filename):
     with open(filename) as json_file:
         data = json.load(json_file)
-        return data
+    return data
 
+def write_data(filename, data):
+    with open(filename, 'w') as f:
+        json.dump(data, f, indent=4)
 
-def matrix_topology(param_topology):
-    """
-        :brief This function is used to convert the json topology into the topology matrix.
-        :param: param_topology: The topology to be converted.
-        :return: The topology matrix [N*N].
-
-        :example:
-            {
-                "R1" : {
-                    "R2" : "GigabitEthernet1/0"
-                },
-                "R2" : {
-                    "R1" : "FastEthernet1/0"
-                }
-            }
-
-            returns:
-            
-            [ Loopback0 ; gigabitEthernet1/0 ]
-            [ fastEthernet 1/0 ; Loopback0]
-
-    """
-    # initialize the matrix with NxN size
-    N = len(param_topology)
-    return [["Loopback0" if x ==y else param_topology["R{}".format(y+1)]["interfaces"]["R{}".format(x+1)] for x in range(N)] for y in range(N)]
-
-
-def generate_ip(matrix_topology):
-    N = len(matrix_topology)
+def generate_ip_topology(topology_file):
     ip_base = "10.0.{}.{}"
-    ip_topology = [[0 for j in range(N)] for i in range(N)]
-    ip_domains = [i+1 for i in range(int(N**2/2))]
-    for router in range(N):
-        for neighbor in range(router, N):
-            if router == neighbor :
-                ip_topology[router][neighbor] = "{}.{}.{}.{}".format(router+1, router+1, router+1, router+1)
-            elif (matrix_topology[router][neighbor] != 0 ):
-                subdom = ip_domains.pop(0)
-                ip_topology[router][neighbor] = ip_base.format(subdom, router+1)
-                ip_topology[neighbor][router] = ip_base.format(subdom, neighbor+1)
-    return ip_topology
-   
-def get_ip_topology(topology_file):
     netmask = "255.255.255.0"
     loopback_netmask = "255.255.255.255"
-    topology = matrix_topology(read_data(topology_file))
-    ip_topology = generate_ip(topology)
-    return [[{"interface_name" : topology[i][j], "ip_address" : ip_topology[i][j], "mask" : loopback_netmask if i == j else netmask} for j in range(len(ip_topology[i]))] for i in range(len(ip_topology))]
+    subdomain = 1
+
+    data_json = read_data(topology_file)
+
+    # pour chaque routeur, parcourir ses interfaces et y associer une adresse IP
+    for router in data_json.keys():
+        # récupérer le numéro de router
+        num_router_act = int(router[1:])
+
+        # pour chaque interface
+        for interface in data_json[router]["interfaces"].keys():
+            router_neighbor = data_json[router]["interfaces"][interface]["neighbor"]
+            router_neighbor_interface = router_neighbor["interface"]
+            router_neighbor_name = router_neighbor["name"]
+            num_router_neighbor = int(router_neighbor["name"][1:])
+
+            if len(data_json[router]["interfaces"][interface]["ip"]) == 0:
+                # configurer ip_address et mask du routeur actuel
+                data_json[router]["interfaces"][interface]["ip"]["ip_address"] = ip_base.format(subdomain, num_router_act)
+                data_json[router]["interfaces"][interface]["ip"]["mask"] = netmask
+                
+                # configurer ip_address et mask du routeur voisin
+                data_json[router_neighbor_name]["interfaces"][router_neighbor_interface]["ip"]["ip_address"] = ip_base.format(subdomain, num_router_neighbor)
+                data_json[router_neighbor_name]["interfaces"][router_neighbor_interface]["ip"]["mask"] = netmask
+
+                # incrémenter le numéro de subdomain
+                subdomain += 1
+
+        # ajout de la loopback
+        data_json[router]["interfaces"]["Loopback0"] = {}
+        data_json[router]["interfaces"]["Loopback0"]["ip"] = {}
+        data_json[router]["interfaces"]["Loopback0"]["ip"]["ip_address"] = "{0}.{0}.{0}.{0}".format(num_router_act)
+        data_json[router]["interfaces"]["Loopback0"]["ip"]["mask"] = loopback_netmask
+
+    return data_json
 
 if __name__ == '__main__':
-     # Read the command requirements from the command.json file
-    topology = matrix_topology(read_data(sys.argv[1]))
+    # Read the command requirements from the command.json file
+    filename = sys.argv[1]
+    # topology = matrix_topology(read_data(filename))
     # Create the API to generate the GNS3 configurations command
-    print(topology)
-    print(generate_ip(topology))
+    # print(get_ip_topology(filename))
+
+    data_json = generate_ip_topology(filename)
+
+    write_data(filename, data_json)
     

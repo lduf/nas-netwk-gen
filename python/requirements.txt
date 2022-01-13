@@ -1,0 +1,2 @@
+console-menu==0.7.0
+tabulate==0.8.9
