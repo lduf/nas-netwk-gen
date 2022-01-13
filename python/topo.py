@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import gns3fy
+import sys
 from tabulate import tabulate
 import json
 from collections import defaultdict
@@ -38,7 +39,8 @@ def write_topology(links_summary, nodes_summary):
     print(topo)
     
     jsonString = json.dumps(topo, indent=4)
-    fileName = "topo.json"
+
+    fileName = sys.argv[1] if len(sys.argv) > 1 else "topology.json"
     file = open(fileName, "w")
     file.write(jsonString)
     file.close()
