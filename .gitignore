@@ -1,4 +1,5 @@
 GNS/NAS_Mathis/project-files/dynamips/
+topology.json
 
 *.ghost
 # Byte-compiled / optimized / DLL files
