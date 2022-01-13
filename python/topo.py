@@ -37,7 +37,7 @@ def write_topology(links_summary, nodes_summary):
 
     print(topo)
     
-    jsonString = json.dumps(topo)
+    jsonString = json.dumps(topo, indent=4)
     fileName = "topo.json"
     file = open(fileName, "w")
     file.write(jsonString)
