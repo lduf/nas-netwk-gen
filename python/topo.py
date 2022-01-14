@@ -23,6 +23,9 @@ def write_topology(links_summary, nodes_summary):
         topo[nodes[0]]["router_id"] = nodes[3]
         topo[nodes[0]]["parameters"] = {}
 
+    for node in lab.nodes :
+        topo[node.name]["console"] = node.console
+
     for link in links_summary :
         topo[link[0]]["interfaces"] = {}
         topo[link[2]]["interfaces"] = {}
@@ -66,6 +69,6 @@ lab.open()
 links_summary = lab.links_summary(is_print=False)
 nodes_summary = lab.nodes_summary(is_print=False)
 
-print(nodes_summary)
+#print(nodes_summary)
 
 write_topology(links_summary, nodes_summary)
