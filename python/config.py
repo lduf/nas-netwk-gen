@@ -86,7 +86,7 @@ def get_command_list():
     return data.keys()
 
 if __name__ == '__main__':
-    command_name = "mpls_global"
+    command_name = "ip_address"
     # Read the command requirements from the command.json file
 
     # get the parameters to modify for this command
