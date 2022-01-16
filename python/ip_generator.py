@@ -29,24 +29,25 @@ def generate_ip_topology(topology_file):
         num_router_act = int(router[1:])
 
         # pour chaque interface
-        for interface in data_json[router]["interfaces"].keys():
-            # récupérer les informations sur le voisin
-            router_neighbor = data_json[router]["interfaces"][interface]["neighbor"]
-            router_neighbor_interface = router_neighbor["interface"]
-            router_neighbor_name = router_neighbor["name"]
-            num_router_neighbor = int(router_neighbor["name"][1:])
+        for interface in data_json[router]["interfaces"]:
+            if "neighbor" in data_json[router]["interfaces"][interface]:
+                # récupérer les informations sur le voisin
+                router_neighbor = data_json[router]["interfaces"][interface]["neighbor"]
+                router_neighbor_interface = router_neighbor["interface"]
+                router_neighbor_name = router_neighbor["name"]
+                num_router_neighbor = int(router_neighbor["name"][1:])
 
-            if len(data_json[router]["interfaces"][interface]["ip"]) == 0:
-                # configurer ip_address et mask du routeur actuel
-                data_json[router]["interfaces"][interface]["ip"]["ip_address"] = ip_base.format(subdomain, num_router_act)
-                data_json[router]["interfaces"][interface]["ip"]["mask"] = netmask
-                
-                # configurer ip_address et mask du routeur voisin
-                data_json[router_neighbor_name]["interfaces"][router_neighbor_interface]["ip"]["ip_address"] = ip_base.format(subdomain, num_router_neighbor)
-                data_json[router_neighbor_name]["interfaces"][router_neighbor_interface]["ip"]["mask"] = netmask
+                if len(data_json[router]["interfaces"][interface]["ip"]) == 0:
+                    # configurer ip_address et mask du routeur actuel
+                    data_json[router]["interfaces"][interface]["ip"]["ip_address"] = ip_base.format(subdomain, num_router_act)
+                    data_json[router]["interfaces"][interface]["ip"]["mask"] = netmask
+                    
+                    # configurer ip_address et mask du routeur voisin
+                    data_json[router_neighbor_name]["interfaces"][router_neighbor_interface]["ip"]["ip_address"] = ip_base.format(subdomain, num_router_neighbor)
+                    data_json[router_neighbor_name]["interfaces"][router_neighbor_interface]["ip"]["mask"] = netmask
 
-                # incrémenter le numéro de subdomain
-                subdomain += 1
+                    # incrémenter le numéro de subdomain
+                    subdomain += 1
 
         # ajout de la loopback
         data_json[router]["interfaces"]["Loopback0"] = {}
