@@ -37,6 +37,9 @@ def get_commands_for_routers(ip_topology):
                     # demander la liste des commandes et l'ajouter à la liste des commandes associées au routeur
                     list_commands_interface.extend(config.get_commands(protocol, parameters_interface))
 
+            # ajout de la commande "write" pour sauvegarder la config dans le fichier routeur
+            list_commands_interface.extend(['write'])
+
             print(f"{router} : {interface} : {protocols_for_interface} : {list_commands_interface}")
             dict_commands_to_send[router]["commands"].extend(list_commands_interface)
 
