@@ -6,12 +6,16 @@ import socket
 import sys
 import time
 import os
-
+import argparse
 
 #TODO : gns3fy pour start le projet au début de l'éxec
 #TODO : lance aussi topo, ip gen puis cli et une fois save on exec main (on tout gérer dans le menu cli)
 #TODO : 
 
+parser = argparse.ArgumentParser(description='Run topology configuration algorithm')
+parser.add_argument('-f', '--topology_file', type=str, help='give the topology file name (default : topology.json)', metavar='', default="topology.json")
+parser.add_argument("-v", "--verbose", help="output verbosity", action="store_true")
+args = parser.parse_args()
 
 def read_data(filename):
     with open(filename) as json_file:
@@ -49,7 +53,8 @@ def get_commands_for_routers(ip_topology):
             list_commands_interface.extend(['write'])
             list_commands_interface.extend(['y']) #TODO : debug console error après un deuxième y en validation
 
-            print(f"{router} : {interface} : {protocols_for_interface} : {list_commands_interface}")
+            if args.verbose:
+                print(f"{router} : {interface} : {protocols_for_interface} : {list_commands_interface}")
             dict_commands_to_send[router]["commands"].extend(list_commands_interface)
 
             # TODO ajouter write
@@ -80,12 +85,13 @@ def configurate_routers(dict_commands_to_send):
             for command in dict_commands_to_send[router]["commands"]:
                 # convertir la command en bytes et rajouter '\r'
                 command_bytes = bytes(command + '\r', 'utf-8')
-
-                print(command_bytes)
+                if args.verbose:
+                    print(command_bytes)
                 # envoi de la commande
                 router_console_sock.send(command_bytes)
                 time.sleep(0.001)
-
+            
+            
             print(f"Configuration de {router} (en théorie) terminée")
             cpt_router_config += 1
 
@@ -109,10 +115,7 @@ def main(topology_file):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        topology_file = "topology.json"
-    else:
-        topology_file = sys.argv[1]
+    topology_file = args.topology_file
 
 
     # topology = read_data("topology.json")

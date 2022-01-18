@@ -1,10 +1,15 @@
 #!/usr/bin/python
 import json
 import sys
+import argparse
 #import tabulate
 """
 This file is used to generate ip addresses for a given router.
 """
+
+parser = argparse.ArgumentParser(description='Run ip generation algorithm')
+parser.add_argument('-f', '--topology_file', type=str, help='give the topology file name (default : topology.json)', metavar='', default="topology.json")
+args = parser.parse_args()
 
 def read_data(filename):
     with open(filename) as json_file:
@@ -83,7 +88,7 @@ def generate_ip_topology(topology_file):
 
 if __name__ == '__main__':
     # Read the command requirements from the command.json file
-    filename = sys.argv[1]
+    filename = args.topology_file
     # topology = matrix_topology(read_data(filename))
     # Create the API to generate the GNS3 configurations command
     # print(get_ip_topology(filename))

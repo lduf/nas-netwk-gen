@@ -6,10 +6,15 @@ import config
 from tabulate import tabulate
 import json
 import sys
+import argparse
 
 nb = 0
 menu = ConsoleMenu("Network configuration", "Choose an action")
 selected_interfaces = dict()
+
+parser = argparse.ArgumentParser(description='Run ip generation algorithm')
+parser.add_argument('-f', '--topology_file', type=str, help='give the topology file name (default : topology.json)', metavar='', default="topology.json")
+args = parser.parse_args()
 
 """
 Voici l'arbre de la topologie
@@ -37,7 +42,7 @@ def read_data(filename):
         data = json.load(json_file)
         return data
 
-topo = read_data("topology.json")
+topo = read_data(args.topology_file)
 
 def routers(topology):
     router_list = []
@@ -151,8 +156,8 @@ if __name__ == '__main__':
             protocol_menu[i].append(ConsoleMenu())
             protocol_menu[i][j].title = f"{protocol} options"
             options_list = config.get_commands_parameters(protocol)
-#            protocol_menu[i][j].prologue_text = tabulate([(k,) + v if k in options_list else _ for k,v in topo[router]["parameters"].items()], headers=["Parameter", "Value"])
-
+            protocol_menu[i][j].prologue_text = tabulate(topo[router]["parameters"].items(), headers=["Parameter", "Value"])
+            
             for param in options_list:
                 param_menu.append([])
                 param_menu[i].append(FunctionItem(param, action, args=[router, param, protocol, router_menu[i], protocol_menu[i][j]]))
@@ -181,7 +186,7 @@ if __name__ == '__main__':
    
 
     jsonString = json.dumps(topo, indent=4)
-    fileName = sys.argv[1] if len(sys.argv) > 1 else "topology.json"
+    fileName = args.topology_file
     file = open(fileName, "w")
     file.write(jsonString)
     file.close()

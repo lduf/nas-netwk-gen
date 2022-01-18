@@ -4,6 +4,13 @@ import sys
 from tabulate import tabulate
 import json
 from collections import defaultdict
+import argparse
+
+
+parser = argparse.ArgumentParser(description='Get the current GNS3 topology')
+parser.add_argument('gns3_file', type=str, help='the GNS3 project name', metavar='gns3_file')
+parser.add_argument('-o', '--topology_file', type=str, help='the topology file name (default : topology.json)', metavar='', default="topology.json")
+args = parser.parse_args()
 
 '''
     L'objectif est de convertir le links_summary en topology exploitable par la suite des fichiers configs
@@ -47,7 +54,7 @@ def write_topology(links_summary, nodes_summary):
     
     jsonString = json.dumps(topo, indent=4)
 
-    fileName = "topology.json"  #sys.argv[1] if len(sys.argv) > 1 else
+    fileName = args.topology_file
     file = open(fileName, "w")
     file.write(jsonString)
     file.close()
@@ -57,11 +64,9 @@ def write_topology(links_summary, nodes_summary):
 
 # Define the server object to establish the connection
 server = gns3fy.Gns3Connector("http://localhost:3080")
-if len(sys.argv)==2:
-    lab = gns3fy.Project(name=sys.argv[1], connector=server)
-else :
-    print("Veuillez préciser le nom du projet GNS3 à traiter")
-    exit(0)
+
+lab = gns3fy.Project(name=args.gns3_file, connector=server)
+
 lab.get()
 #print(lab)
 lab.open()

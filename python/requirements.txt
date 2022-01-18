@@ -1,2 +1,3 @@
 console-menu==0.7.0
+gns3fy==0.7.1
 tabulate==0.8.9
