@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import json
 import sys
-import tabulate
+#import tabulate
 """
 This file is used to generate ip addresses for a given router.
 """

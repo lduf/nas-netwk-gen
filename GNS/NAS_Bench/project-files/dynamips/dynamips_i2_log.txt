@@ -1,0 +1,57 @@
+Jan 18 10:16:57.308 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Jan 18 10:16:57.309 HYPERVISOR: Started on TCP port = 61873.
+Jan 18 10:16:57.799 HYPERVISOR: exec_cmd: hypervisor version 
+Jan 18 10:16:57.800 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Bench\project-files\dynamips 
+Jan 18 10:16:57.800 GENERAL: working_dir=C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Bench\project-files\dynamips
+Jan 18 10:16:57.800 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Bench\project-files\dynamips\1be8e394-840d-4152-a50a-c1474f7001ad 
+Jan 18 10:16:57.800 GENERAL: working_dir=C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Bench\project-files\dynamips\1be8e394-840d-4152-a50a-c1474f7001ad
+Jan 18 10:16:57.801 HYPERVISOR: exec_cmd: vm create R2 2 c7200 
+Jan 18 10:16:57.802 VM: VM R2 created.
+Jan 18 10:16:57.803 HYPERVISOR: exec_cmd: vm set_con_tcp_port R2 6001 
+Jan 18 10:16:57.803 HYPERVISOR: exec_cmd: c7200 get_mac_addr R2 
+Jan 18 10:16:57.803 HYPERVISOR: exec_cmd: vm get_status R2 
+Jan 18 10:16:57.804 HYPERVISOR: exec_cmd: vm slot_add_binding R2 0 0 C7200-IO-FE 
+Jan 18 10:16:57.804 HYPERVISOR: exec_cmd: vm set_ios R2 C:/Users/33781/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 18 10:16:57.805 HYPERVISOR: exec_cmd: vm set_exec_area R2 64 
+Jan 18 10:16:57.805 HYPERVISOR: exec_cmd: vm set_ram R2 512 
+Jan 18 10:16:57.806 HYPERVISOR: exec_cmd: vm set_nvram R2 512 
+Jan 18 10:16:57.806 HYPERVISOR: exec_cmd: vm set_disk0 R2 0 
+Jan 18 10:16:57.807 HYPERVISOR: exec_cmd: vm get_status R2 
+Jan 18 10:16:57.807 HYPERVISOR: exec_cmd: vm slot_add_binding R2 1 0 PA-GE 
+Jan 18 10:16:57.807 HYPERVISOR: exec_cmd: vm get_status R2 
+Jan 18 10:16:57.808 HYPERVISOR: exec_cmd: vm slot_add_binding R2 2 0 PA-GE 
+Jan 18 10:16:57.808 HYPERVISOR: exec_cmd: vm get_status R2 
+Jan 18 10:16:57.808 HYPERVISOR: exec_cmd: vm slot_add_binding R2 3 0 PA-GE 
+Jan 18 10:16:57.870 HYPERVISOR: exec_cmd: vm set_ios R2 C:/Users/33781/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 18 10:17:02.459 HYPERVISOR: exec_cmd: vm set_ios R2 C:/Users/33781/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 18 10:17:06.751 HYPERVISOR: exec_cmd: nio create_udp udp-07435f2a-01ec-44a9-861a-568b990b1a25 2004 127.0.0.1 2005 
+Jan 18 10:17:06.994 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R2 0 0 udp-07435f2a-01ec-44a9-861a-568b990b1a25 
+Jan 18 10:17:06.994 HYPERVISOR: exec_cmd: vm get_status R2 
+Jan 18 10:17:08.738 HYPERVISOR: exec_cmd: nio create_udp udp-8683cca8-e7e2-4ad7-a24e-02ab1b348072 2008 127.0.0.1 2009 
+Jan 18 10:17:08.740 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R2 1 0 udp-8683cca8-e7e2-4ad7-a24e-02ab1b348072 
+Jan 18 10:17:08.741 HYPERVISOR: exec_cmd: vm get_status R2 
+Jan 18 10:17:19.835 HYPERVISOR: exec_cmd: vm create Ghost 0 c7200 
+Jan 18 10:17:19.838 VM: VM Ghost created.
+Jan 18 10:17:19.839 HYPERVISOR: exec_cmd: vm set_ios Ghost C:/Users/33781/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 18 10:17:19.840 HYPERVISOR: exec_cmd: vm set_ghost_status Ghost 1 
+Jan 18 10:17:19.840 HYPERVISOR: exec_cmd: vm set_ghost_file Ghost C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Bench\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
+Jan 18 10:17:19.840 HYPERVISOR: exec_cmd: vm set_ram Ghost 512 
+Jan 18 10:17:19.841 HYPERVISOR: exec_cmd: vm get_status Ghost 
+Jan 18 10:17:19.841 HYPERVISOR: exec_cmd: vm set_config Ghost configs\i0_startup-config.cfg 
+Jan 18 10:17:19.842 HYPERVISOR: exec_cmd: vm start Ghost 
+Jan 18 10:17:20.188 HYPERVISOR: exec_cmd: vm get_status Ghost 
+Jan 18 10:17:20.189 HYPERVISOR: exec_cmd: vm stop Ghost 
+Jan 18 10:17:20.335 VM: VM Ghost shutdown.
+Jan 18 10:17:20.336 HYPERVISOR: exec_cmd: vm extract_config Ghost 
+Jan 18 10:17:20.338 HYPERVISOR: exec_cmd: vm clean_delete Ghost 
+Jan 18 10:17:20.338 VM: VM Ghost destroyed.
+Jan 18 10:17:20.346 HYPERVISOR: exec_cmd: vm set_ghost_status R2 2 
+Jan 18 10:17:20.347 HYPERVISOR: exec_cmd: vm set_ghost_file R2 C:\Users\33781\INSA\4TC1\nas\nas-netwk-gen\GNS\NAS_Bench\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
+Jan 18 10:17:20.347 HYPERVISOR: exec_cmd: vm get_status R2 
+Jan 18 10:17:20.348 HYPERVISOR: exec_cmd: vm set_config R2 configs\i2_startup-config.cfg 
+Jan 18 10:17:20.349 HYPERVISOR: exec_cmd: vm start R2 
+Jan 18 10:17:50.675 HYPERVISOR: exec_cmd: vm extract_config R2 
+Jan 18 10:22:29.894 HYPERVISOR: exec_cmd: vm get_status R2 
+Jan 18 10:22:29.895 HYPERVISOR: exec_cmd: vm stop R2 
+Jan 18 10:22:30.004 VM: VM R2 shutdown.
+Jan 18 10:22:30.005 HYPERVISOR: exec_cmd: vm extract_config R2 
