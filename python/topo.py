@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import gns3fy
 import sys
-#from tabulate import tabulate
+from tabulate import tabulate
 import json
 from collections import defaultdict
 
@@ -47,7 +47,7 @@ def write_topology(links_summary, nodes_summary):
     
     jsonString = json.dumps(topo, indent=4)
 
-    fileName = sys.argv[1] if len(sys.argv) > 1 else "topology.json"
+    fileName = "topology.json"  #sys.argv[1] if len(sys.argv) > 1 else
     file = open(fileName, "w")
     file.write(jsonString)
     file.close()
@@ -57,7 +57,11 @@ def write_topology(links_summary, nodes_summary):
 
 # Define the server object to establish the connection
 server = gns3fy.Gns3Connector("http://localhost:3080")
-lab = gns3fy.Project(name="NAS_Mathis", connector=server)
+if len(sys.argv)==2:
+    lab = gns3fy.Project(name=sys.argv[1], connector=server)
+else :
+    print("Veuillez préciser le nom du projet GNS3 à traiter")
+    exit(0)
 lab.get()
 #print(lab)
 lab.open()
