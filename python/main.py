@@ -4,6 +4,14 @@ import json
 import re
 import socket
 import sys
+import time
+import os
+
+
+#TODO : gns3fy pour start le projet au début de l'éxec
+#TODO : lance aussi topo, ip gen puis cli et une fois save on exec main (on tout gérer dans le menu cli)
+#TODO : 
+
 
 def read_data(filename):
     with open(filename) as json_file:
@@ -39,6 +47,7 @@ def get_commands_for_routers(ip_topology):
 
             # ajout de la commande "write" pour sauvegarder la config dans le fichier routeur
             list_commands_interface.extend(['write'])
+            list_commands_interface.extend(['y']) #TODO : debug console error après un deuxième y en validation
 
             print(f"{router} : {interface} : {protocols_for_interface} : {list_commands_interface}")
             dict_commands_to_send[router]["commands"].extend(list_commands_interface)
@@ -62,6 +71,12 @@ def configurate_routers(dict_commands_to_send):
             router_console_sock = socket.socket()
             router_console_sock.connect((console_ip, console_port))
 
+            #IMPORTANT : il faut avoir l'option auto start console dans la config des routeurs ON
+            router_console_sock.send(bytes("" + '\r', 'utf-8')) #si la console est buguée, c'est pour simuler le vieux ENTRER au début
+            router_console_sock.send(bytes("configure terminal" + '\r', 'utf-8'))
+            router_console_sock.send(bytes("no logging console" + '\r', 'utf-8'))
+            router_console_sock.send(bytes("end" + '\r', 'utf-8'))
+
             for command in dict_commands_to_send[router]["commands"]:
                 # convertir la command en bytes et rajouter '\r'
                 command_bytes = bytes(command + '\r', 'utf-8')
@@ -69,6 +84,7 @@ def configurate_routers(dict_commands_to_send):
                 print(command_bytes)
                 # envoi de la commande
                 router_console_sock.send(command_bytes)
+                time.sleep(0.001)
 
             print(f"Configuration de {router} (en théorie) terminée")
             cpt_router_config += 1
