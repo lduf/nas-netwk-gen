@@ -14,6 +14,7 @@
                     "interface": "GigabitEthernet1/0"
                 },
                 "protocols": [
+                    "ip_address",
                     "mpls",
                     "ospf"
                 ],
@@ -33,6 +34,7 @@
                     "interface": "GigabitEthernet1/0"
                 },
                 "protocols": [
+                    "ip_address",
                     "mpls",
                     "ospf"
                 ],
@@ -52,6 +54,7 @@
                     "interface": "GigabitEthernet1/0"
                 },
                 "protocols": [
+                    "ip_address",
                     "mpls",
                     "ospf"
                 ],
@@ -69,7 +72,15 @@
                 "ip": {
                     "ip_address": "1.1.1.1",
                     "mask": "255.255.255.255"
-                }
+                },
+                "parameters": {
+                    "ip_address": "1.1.1.1",
+                    "mask": "255.255.255.255",
+                    "interface_name": "Loopback0"
+                },
+                "protocols": [
+                    "ip_address"
+                ]
             }
         }
     },
@@ -88,6 +99,7 @@
                     "interface": "GigabitEthernet1/0"
                 },
                 "protocols": [
+                    "ip_address",
                     "ospf",
                     "mpls"
                 ],
@@ -107,6 +119,7 @@
                     "interface": "FastEthernet0/0"
                 },
                 "protocols": [
+                    "ip_address",
                     "ospf",
                     "mpls"
                 ],
@@ -126,6 +139,7 @@
                     "interface": "GigabitEthernet1/0"
                 },
                 "protocols": [
+                    "ip_address",
                     "ospf",
                     "mpls"
                 ],
@@ -143,7 +157,15 @@
                 "ip": {
                     "ip_address": "2.2.2.2",
                     "mask": "255.255.255.255"
-                }
+                },
+                "parameters": {
+                    "ip_address": "2.2.2.2",
+                    "mask": "255.255.255.255",
+                    "interface_name": "Loopback0"
+                },
+                "protocols": [
+                    "ip_address"
+                ]
             }
         }
     },
@@ -162,6 +184,7 @@
                     "interface": "GigabitEthernet2/0"
                 },
                 "protocols": [
+                    "ip_address",
                     "mpls",
                     "ospf"
                 ],
@@ -181,6 +204,7 @@
                     "interface": "GigabitEthernet3/0"
                 },
                 "protocols": [
+                    "ip_address",
                     "mpls",
                     "ospf"
                 ],
@@ -200,6 +224,7 @@
                     "interface": "GigabitEthernet1/0"
                 },
                 "protocols": [
+                    "ip_address",
                     "mpls",
                     "ospf"
                 ],
@@ -217,7 +242,15 @@
                 "ip": {
                     "ip_address": "3.3.3.3",
                     "mask": "255.255.255.255"
-                }
+                },
+                "parameters": {
+                    "ip_address": "3.3.3.3",
+                    "mask": "255.255.255.255",
+                    "interface_name": "Loopback0"
+                },
+                "protocols": [
+                    "ip_address"
+                ]
             }
         }
     },
@@ -231,7 +264,9 @@
                     "name": "R3",
                     "interface": "GigabitEthernet3/0"
                 },
-                "protocols": [],
+                "protocols": [
+                    "ip_address"
+                ],
                 "parameters": {
                     "ip_address": "10.0.6.4",
                     "mask": "255.255.255.0",
@@ -247,7 +282,9 @@
                     "name": "R2",
                     "interface": "GigabitEthernet2/0"
                 },
-                "protocols": [],
+                "protocols": [
+                    "ip_address"
+                ],
                 "parameters": {
                     "ip_address": "10.0.5.4",
                     "mask": "255.255.255.0",
@@ -263,7 +300,9 @@
                     "name": "R6",
                     "interface": "GigabitEthernet2/0"
                 },
-                "protocols": [],
+                "protocols": [
+                    "ip_address"
+                ],
                 "parameters": {
                     "ip_address": "10.0.8.4",
                     "mask": "255.255.255.0",
@@ -278,7 +317,15 @@
                 "ip": {
                     "ip_address": "4.4.4.4",
                     "mask": "255.255.255.255"
-                }
+                },
+                "parameters": {
+                    "ip_address": "4.4.4.4",
+                    "mask": "255.255.255.255",
+                    "interface_name": "Loopback0"
+                },
+                "protocols": [
+                    "ip_address"
+                ]
             }
         }
     },
@@ -292,7 +339,9 @@
                     "name": "R1",
                     "interface": "GigabitEthernet3/0"
                 },
-                "protocols": [],
+                "protocols": [
+                    "ip_address"
+                ],
                 "parameters": {
                     "ip_address": "10.0.3.5",
                     "mask": "255.255.255.0",
@@ -308,7 +357,9 @@
                     "name": "R2",
                     "interface": "FastEthernet0/0"
                 },
-                "protocols": [],
+                "protocols": [
+                    "ip_address"
+                ],
                 "parameters": {
                     "ip_address": "10.0.4.5",
                     "mask": "255.255.255.0",
@@ -324,7 +375,9 @@
                     "name": "R7",
                     "interface": "GigabitEthernet1/0"
                 },
-                "protocols": [],
+                "protocols": [
+                    "ip_address"
+                ],
                 "parameters": {
                     "ip_address": "10.0.9.5",
                     "mask": "255.255.255.0",
@@ -339,7 +392,15 @@
                 "ip": {
                     "ip_address": "5.5.5.5",
                     "mask": "255.255.255.255"
-                }
+                },
+                "parameters": {
+                    "ip_address": "5.5.5.5",
+                    "mask": "255.255.255.255",
+                    "interface_name": "Loopback0"
+                },
+                "protocols": [
+                    "ip_address"
+                ]
             }
         }
     },
@@ -353,7 +414,9 @@
                     "name": "R3",
                     "interface": "GigabitEthernet2/0"
                 },
-                "protocols": [],
+                "protocols": [
+                    "ip_address"
+                ],
                 "parameters": {
                     "ip_address": "10.0.7.6",
                     "mask": "255.255.255.0",
@@ -369,7 +432,9 @@
                     "name": "R4",
                     "interface": "GigabitEthernet2/0"
                 },
-                "protocols": [],
+                "protocols": [
+                    "ip_address"
+                ],
                 "parameters": {
                     "ip_address": "10.0.8.6",
                     "mask": "255.255.255.0",
@@ -385,7 +450,9 @@
                     "name": "R8",
                     "interface": "GigabitEthernet1/0"
                 },
-                "protocols": [],
+                "protocols": [
+                    "ip_address"
+                ],
                 "parameters": {
                     "ip_address": "10.0.10.6",
                     "mask": "255.255.255.0",
@@ -400,7 +467,15 @@
                 "ip": {
                     "ip_address": "6.6.6.6",
                     "mask": "255.255.255.255"
-                }
+                },
+                "parameters": {
+                    "ip_address": "6.6.6.6",
+                    "mask": "255.255.255.255",
+                    "interface_name": "Loopback0"
+                },
+                "protocols": [
+                    "ip_address"
+                ]
             }
         }
     },
@@ -414,7 +489,9 @@
                     "name": "R5",
                     "interface": "GigabitEthernet2/0"
                 },
-                "protocols": [],
+                "protocols": [
+                    "ip_address"
+                ],
                 "parameters": {
                     "ip_address": "10.0.9.7",
                     "mask": "255.255.255.0",
@@ -430,7 +507,9 @@
                     "name": "R8",
                     "interface": "FastEthernet0/0"
                 },
-                "protocols": [],
+                "protocols": [
+                    "ip_address"
+                ],
                 "parameters": {
                     "ip_address": "10.0.11.7",
                     "mask": "255.255.255.0",
@@ -445,7 +524,15 @@
                 "ip": {
                     "ip_address": "7.7.7.7",
                     "mask": "255.255.255.255"
-                }
+                },
+                "parameters": {
+                    "ip_address": "7.7.7.7",
+                    "mask": "255.255.255.255",
+                    "interface_name": "Loopback0"
+                },
+                "protocols": [
+                    "ip_address"
+                ]
             }
         }
     },
@@ -459,7 +546,9 @@
                     "name": "R6",
                     "interface": "GigabitEthernet3/0"
                 },
-                "protocols": [],
+                "protocols": [
+                    "ip_address"
+                ],
                 "parameters": {
                     "ip_address": "10.0.10.8",
                     "mask": "255.255.255.0",
@@ -475,7 +564,9 @@
                     "name": "R7",
                     "interface": "FastEthernet0/0"
                 },
-                "protocols": [],
+                "protocols": [
+                    "ip_address"
+                ],
                 "parameters": {
                     "ip_address": "10.0.11.8",
                     "mask": "255.255.255.0",
@@ -490,7 +581,15 @@
                 "ip": {
                     "ip_address": "8.8.8.8",
                     "mask": "255.255.255.255"
-                }
+                },
+                "parameters": {
+                    "ip_address": "8.8.8.8",
+                    "mask": "255.255.255.255",
+                    "interface_name": "Loopback0"
+                },
+                "protocols": [
+                    "ip_address"
+                ]
             }
         }
     }

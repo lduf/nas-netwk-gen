@@ -3,6 +3,7 @@ import config
 import json
 import re
 import socket
+import sys
 
 def read_data(filename):
     with open(filename) as json_file:
@@ -39,6 +40,8 @@ def get_commands_for_routers(ip_topology):
             print(f"{router} : {interface} : {protocols_for_interface} : {list_commands_interface}")
             dict_commands_to_send[router]["commands"].extend(list_commands_interface)
 
+            # TODO ajouter write
+
     return dict_commands_to_send
 
 def configurate_routers(dict_commands_to_send):
@@ -74,9 +77,7 @@ def configurate_routers(dict_commands_to_send):
 
 
 
-def main():
-    topology_file = "topology.json"
-
+def main(topology_file):
     # génération des IP (se fera seulement si certaiens interfaces n'ont pas d'IP affectées)
     ip_topology = ip_generator.generate_ip_topology(topology_file)
 
@@ -89,6 +90,12 @@ def main():
 
 
 if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        topology_file = "topology.json"
+    else:
+        topology_file = sys.argv[1]
+
+
     # topology = read_data("topology.json")
     # ip_topology = ip_generator.get_ip_topology("topology.json")
     # i = 1
@@ -98,4 +105,6 @@ if __name__ == '__main__':
     #     for neighbor in router:
     #         commands = config.get_commands("ip_address", neighbor)
     #         print(commands)
-    main()
+
+
+    main(topology_file)

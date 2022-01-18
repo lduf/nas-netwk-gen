@@ -18,13 +18,20 @@ def write_data(filename, data):
 def add_parameters_interface(data_json):
     for router in data_json:
         for interface in data_json[router]["interfaces"]:
-            if "parameters" in data_json[router]["interfaces"][interface]:
-                # ajouter l'ip_address
-                data_json[router]["interfaces"][interface]["parameters"]["ip_address"] = data_json[router]["interfaces"][interface]["ip"]["ip_address"]
-                # ajouter le mask
-                data_json[router]["interfaces"][interface]["parameters"]["mask"] = data_json[router]["interfaces"][interface]["ip"]["mask"]
-                # ajouter l'interface name
-                data_json[router]["interfaces"][interface]["parameters"]["interface_name"] = interface
+            if "parameters" not in data_json[router]["interfaces"][interface]:
+                data_json[router]["interfaces"][interface]["parameters"] = {}
+            if "protocols" not in data_json[router]["interfaces"][interface]:
+                data_json[router]["interfaces"][interface]["protocols"] = ["ip_address"]
+
+            # ajouter l'ip_address
+            data_json[router]["interfaces"][interface]["parameters"]["ip_address"] = data_json[router]["interfaces"][interface]["ip"]["ip_address"]
+            # ajouter le mask
+            data_json[router]["interfaces"][interface]["parameters"]["mask"] = data_json[router]["interfaces"][interface]["ip"]["mask"]
+            # ajouter l'interface name
+            data_json[router]["interfaces"][interface]["parameters"]["interface_name"] = interface
+
+            if "ip_address" not in data_json[router]["interfaces"][interface]["protocols"]:
+                data_json[router]["interfaces"][interface]["protocols"].insert(0, "ip_address")
 
     return data_json
 
@@ -69,6 +76,9 @@ def generate_ip_topology(topology_file):
         data_json[router]["interfaces"]["Loopback0"]["ip"]["ip_address"] = "{0}.{0}.{0}.{0}".format(num_router_act)
         data_json[router]["interfaces"]["Loopback0"]["ip"]["mask"] = loopback_netmask
 
+    data_json = add_parameters_interface(data_json)
+    write_data(topology_file, data_json)
+
     return data_json
 
 if __name__ == '__main__':
@@ -79,7 +89,4 @@ if __name__ == '__main__':
     # print(get_ip_topology(filename))
 
     data_json = generate_ip_topology(filename)
-    data_json = add_parameters_interface(data_json)
-
-    write_data(filename, data_json)
     
