@@ -22,20 +22,22 @@ def get_commands_for_routers(ip_topology):
         dict_commands_to_send[router]["commands"] = []
 
         for interface in ip_topology[router]["interfaces"]:
-            protocols_for_interface = []
             # récupérer pour chaque interface de chaque routeur la liste des protocoles activés
             if "protocols" in ip_topology[router]["interfaces"][interface]:
                 protocols_for_interface = ip_topology[router]["interfaces"][interface]["protocols"]
-                print(f"{router} : {interface} : {protocols_for_interface}")
+
+                list_commands_interface = []
 
                 # faire appel à l'API de config pour récupérer la liste des commandes pour chaque protocol
-                parameters_interface = ip_topology[router]["interfaces"][interface]["parameters"]
                 for protocol in protocols_for_interface:
-                    # en theorie on a un dict avec tous les paramètres possibles
-                    # donc plus besoin de faire un premier appel API pour avoir la liste des paramètres à fournir
+                    # concaténer les deux dictionnaires (le dictionnaire de router + le dict d'interface)
+                    parameters_interface = {**ip_topology[router]["interfaces"][interface]["parameters"], **ip_topology[router]["parameters"]}
 
                     # demander la liste des commandes et l'ajouter à la liste des commandes associées au routeur
-                    dict_commands_to_send[router]["commands"].extends(config.get_commands(protocol, parameters_interface))
+                    list_commands_interface.extend(config.get_commands(protocol, parameters_interface))
+
+            print(f"{router} : {interface} : {protocols_for_interface} : {list_commands_interface}")
+            dict_commands_to_send[router]["commands"].extend(list_commands_interface)
 
     return dict_commands_to_send
 

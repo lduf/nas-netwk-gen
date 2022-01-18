@@ -15,6 +15,19 @@ def write_data(filename, data):
     with open(filename, 'w') as f:
         json.dump(data, f, indent=4)
 
+def add_parameters_interface(data_json):
+    for router in data_json:
+        for interface in data_json[router]["interfaces"]:
+            if "parameters" in data_json[router]["interfaces"][interface]:
+                # ajouter l'ip_address
+                data_json[router]["interfaces"][interface]["parameters"]["ip_address"] = data_json[router]["interfaces"][interface]["ip"]["ip_address"]
+                # ajouter le mask
+                data_json[router]["interfaces"][interface]["parameters"]["mask"] = data_json[router]["interfaces"][interface]["ip"]["mask"]
+                # ajouter l'interface name
+                data_json[router]["interfaces"][interface]["parameters"]["interface_name"] = interface
+
+    return data_json
+
 def generate_ip_topology(topology_file):
     ip_base = "10.0.{}.{}"
     netmask = "255.255.255.0"
@@ -30,6 +43,7 @@ def generate_ip_topology(topology_file):
 
         # pour chaque interface
         for interface in data_json[router]["interfaces"]:
+
             if "neighbor" in data_json[router]["interfaces"][interface]:
                 # récupérer les informations sur le voisin
                 router_neighbor = data_json[router]["interfaces"][interface]["neighbor"]
@@ -45,7 +59,7 @@ def generate_ip_topology(topology_file):
                     # configurer ip_address et mask du routeur voisin
                     data_json[router_neighbor_name]["interfaces"][router_neighbor_interface]["ip"]["ip_address"] = ip_base.format(subdomain, num_router_neighbor)
                     data_json[router_neighbor_name]["interfaces"][router_neighbor_interface]["ip"]["mask"] = netmask
-
+                    
                     # incrémenter le numéro de subdomain
                     subdomain += 1
 
@@ -65,6 +79,7 @@ if __name__ == '__main__':
     # print(get_ip_topology(filename))
 
     data_json = generate_ip_topology(filename)
+    data_json = add_parameters_interface(data_json)
 
     write_data(filename, data_json)
     

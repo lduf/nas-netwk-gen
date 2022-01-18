@@ -1,7 +1,11 @@
 {
     "R1": {
         "router_id": "996e4fd9-9ca0-4b18-9ac5-8d5d14a58192",
-        "parameters": {},
+        "parameters": {
+            "area_id": "1",
+            "router_id": "1.1.1.1",
+            "ospf_process_id": "1"
+        },
         "console": 6000,
         "interfaces": {
             "GigabitEthernet2/0": {
@@ -9,8 +13,15 @@
                     "name": "R3",
                     "interface": "GigabitEthernet1/0"
                 },
-                "protocols": [],
-                "parameters": {},
+                "protocols": [
+                    "mpls",
+                    "ospf"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.1.1",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet2/0"
+                },
                 "ip": {
                     "ip_address": "10.0.1.1",
                     "mask": "255.255.255.0"
@@ -21,8 +32,15 @@
                     "name": "R2",
                     "interface": "GigabitEthernet1/0"
                 },
-                "protocols": [],
-                "parameters": {},
+                "protocols": [
+                    "mpls",
+                    "ospf"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.2.1",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet1/0"
+                },
                 "ip": {
                     "ip_address": "10.0.2.1",
                     "mask": "255.255.255.0"
@@ -33,8 +51,15 @@
                     "name": "R5",
                     "interface": "GigabitEthernet1/0"
                 },
-                "protocols": [],
-                "parameters": {},
+                "protocols": [
+                    "mpls",
+                    "ospf"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.3.1",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet3/0"
+                },
                 "ip": {
                     "ip_address": "10.0.3.1",
                     "mask": "255.255.255.0"
@@ -50,7 +75,11 @@
     },
     "R2": {
         "router_id": "efc33e42-02f4-4f4a-953e-2f811684a890",
-        "parameters": {},
+        "parameters": {
+            "ospf_process_id": "1",
+            "area_id": "1",
+            "router_id": "1"
+        },
         "console": 6001,
         "interfaces": {
             "GigabitEthernet1/0": {
@@ -58,8 +87,15 @@
                     "name": "R1",
                     "interface": "GigabitEthernet1/0"
                 },
-                "protocols": [],
-                "parameters": {},
+                "protocols": [
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.2.2",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet1/0"
+                },
                 "ip": {
                     "ip_address": "10.0.2.2",
                     "mask": "255.255.255.0"
@@ -70,8 +106,15 @@
                     "name": "R5",
                     "interface": "FastEthernet0/0"
                 },
-                "protocols": [],
-                "parameters": {},
+                "protocols": [
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.4.2",
+                    "mask": "255.255.255.0",
+                    "interface_name": "FastEthernet0/0"
+                },
                 "ip": {
                     "ip_address": "10.0.4.2",
                     "mask": "255.255.255.0"
@@ -82,8 +125,15 @@
                     "name": "R4",
                     "interface": "GigabitEthernet1/0"
                 },
-                "protocols": [],
-                "parameters": {},
+                "protocols": [
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.5.2",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet2/0"
+                },
                 "ip": {
                     "ip_address": "10.0.5.2",
                     "mask": "255.255.255.0"
@@ -99,7 +149,11 @@
     },
     "R3": {
         "router_id": "e01ee11f-f9c6-4753-ae9e-ae7673a942d6",
-        "parameters": {},
+        "parameters": {
+            "area_id": "1",
+            "router_id": "1",
+            "ospf_process_id": "1"
+        },
         "console": 6002,
         "interfaces": {
             "GigabitEthernet1/0": {
@@ -107,8 +161,15 @@
                     "name": "R1",
                     "interface": "GigabitEthernet2/0"
                 },
-                "protocols": [],
-                "parameters": {},
+                "protocols": [
+                    "mpls",
+                    "ospf"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.1.3",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet1/0"
+                },
                 "ip": {
                     "ip_address": "10.0.1.3",
                     "mask": "255.255.255.0"
@@ -119,8 +180,15 @@
                     "name": "R4",
                     "interface": "GigabitEthernet3/0"
                 },
-                "protocols": [],
-                "parameters": {},
+                "protocols": [
+                    "mpls",
+                    "ospf"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.6.3",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet3/0"
+                },
                 "ip": {
                     "ip_address": "10.0.6.3",
                     "mask": "255.255.255.0"
@@ -131,8 +199,15 @@
                     "name": "R6",
                     "interface": "GigabitEthernet1/0"
                 },
-                "protocols": [],
-                "parameters": {},
+                "protocols": [
+                    "mpls",
+                    "ospf"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.7.3",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet2/0"
+                },
                 "ip": {
                     "ip_address": "10.0.7.3",
                     "mask": "255.255.255.0"
@@ -157,7 +232,11 @@
                     "interface": "GigabitEthernet3/0"
                 },
                 "protocols": [],
-                "parameters": {},
+                "parameters": {
+                    "ip_address": "10.0.6.4",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet3/0"
+                },
                 "ip": {
                     "ip_address": "10.0.6.4",
                     "mask": "255.255.255.0"
@@ -169,7 +248,11 @@
                     "interface": "GigabitEthernet2/0"
                 },
                 "protocols": [],
-                "parameters": {},
+                "parameters": {
+                    "ip_address": "10.0.5.4",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet1/0"
+                },
                 "ip": {
                     "ip_address": "10.0.5.4",
                     "mask": "255.255.255.0"
@@ -181,7 +264,11 @@
                     "interface": "GigabitEthernet2/0"
                 },
                 "protocols": [],
-                "parameters": {},
+                "parameters": {
+                    "ip_address": "10.0.8.4",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet2/0"
+                },
                 "ip": {
                     "ip_address": "10.0.8.4",
                     "mask": "255.255.255.0"
@@ -206,7 +293,11 @@
                     "interface": "GigabitEthernet3/0"
                 },
                 "protocols": [],
-                "parameters": {},
+                "parameters": {
+                    "ip_address": "10.0.3.5",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet1/0"
+                },
                 "ip": {
                     "ip_address": "10.0.3.5",
                     "mask": "255.255.255.0"
@@ -218,7 +309,11 @@
                     "interface": "FastEthernet0/0"
                 },
                 "protocols": [],
-                "parameters": {},
+                "parameters": {
+                    "ip_address": "10.0.4.5",
+                    "mask": "255.255.255.0",
+                    "interface_name": "FastEthernet0/0"
+                },
                 "ip": {
                     "ip_address": "10.0.4.5",
                     "mask": "255.255.255.0"
@@ -230,7 +325,11 @@
                     "interface": "GigabitEthernet1/0"
                 },
                 "protocols": [],
-                "parameters": {},
+                "parameters": {
+                    "ip_address": "10.0.9.5",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet2/0"
+                },
                 "ip": {
                     "ip_address": "10.0.9.5",
                     "mask": "255.255.255.0"
@@ -255,7 +354,11 @@
                     "interface": "GigabitEthernet2/0"
                 },
                 "protocols": [],
-                "parameters": {},
+                "parameters": {
+                    "ip_address": "10.0.7.6",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet1/0"
+                },
                 "ip": {
                     "ip_address": "10.0.7.6",
                     "mask": "255.255.255.0"
@@ -267,7 +370,11 @@
                     "interface": "GigabitEthernet2/0"
                 },
                 "protocols": [],
-                "parameters": {},
+                "parameters": {
+                    "ip_address": "10.0.8.6",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet2/0"
+                },
                 "ip": {
                     "ip_address": "10.0.8.6",
                     "mask": "255.255.255.0"
@@ -279,7 +386,11 @@
                     "interface": "GigabitEthernet1/0"
                 },
                 "protocols": [],
-                "parameters": {},
+                "parameters": {
+                    "ip_address": "10.0.10.6",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet3/0"
+                },
                 "ip": {
                     "ip_address": "10.0.10.6",
                     "mask": "255.255.255.0"
@@ -304,7 +415,11 @@
                     "interface": "GigabitEthernet2/0"
                 },
                 "protocols": [],
-                "parameters": {},
+                "parameters": {
+                    "ip_address": "10.0.9.7",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet1/0"
+                },
                 "ip": {
                     "ip_address": "10.0.9.7",
                     "mask": "255.255.255.0"
@@ -316,7 +431,11 @@
                     "interface": "FastEthernet0/0"
                 },
                 "protocols": [],
-                "parameters": {},
+                "parameters": {
+                    "ip_address": "10.0.11.7",
+                    "mask": "255.255.255.0",
+                    "interface_name": "FastEthernet0/0"
+                },
                 "ip": {
                     "ip_address": "10.0.11.7",
                     "mask": "255.255.255.0"
@@ -341,7 +460,11 @@
                     "interface": "GigabitEthernet3/0"
                 },
                 "protocols": [],
-                "parameters": {},
+                "parameters": {
+                    "ip_address": "10.0.10.8",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet1/0"
+                },
                 "ip": {
                     "ip_address": "10.0.10.8",
                     "mask": "255.255.255.0"
@@ -353,7 +476,11 @@
                     "interface": "FastEthernet0/0"
                 },
                 "protocols": [],
-                "parameters": {},
+                "parameters": {
+                    "ip_address": "10.0.11.8",
+                    "mask": "255.255.255.0",
+                    "interface_name": "FastEthernet0/0"
+                },
                 "ip": {
                     "ip_address": "10.0.11.8",
                     "mask": "255.255.255.0"
