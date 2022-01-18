@@ -151,7 +151,7 @@ if __name__ == '__main__':
             protocol_menu[i].append(ConsoleMenu())
             protocol_menu[i][j].title = f"{protocol} options"
             options_list = config.get_commands_parameters(protocol)
-            protocol_menu[i][j].prologue_text = tabulate([(k,) + v if k in options_list else _ for k,v in topo[router]["parameters"].items()], headers=["Parameter", "Value"])
+#            protocol_menu[i][j].prologue_text = tabulate([(k,) + v if k in options_list else _ for k,v in topo[router]["parameters"].items()], headers=["Parameter", "Value"])
 
             for param in options_list:
                 param_menu.append([])
@@ -181,7 +181,7 @@ if __name__ == '__main__':
    
 
     jsonString = json.dumps(topo, indent=4)
-    fileName = sys.argv[1] if len(sys.argv) > 1 else "topology_updt.json"
+    fileName = sys.argv[1] if len(sys.argv) > 1 else "topology.json"
     file = open(fileName, "w")
     file.write(jsonString)
     file.close()
