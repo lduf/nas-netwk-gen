@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import gns3fy
 import sys
-from tabulate import tabulate
+#from tabulate import tabulate
 import json
 from collections import defaultdict
 
