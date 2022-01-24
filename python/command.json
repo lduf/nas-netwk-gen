@@ -88,5 +88,17 @@
             "mpls ip",
             "end"
         ]
+    },
+    "bgp" : {
+        "required_config" : [
+            "config_interface"
+        ],
+        "command": [
+            "router bgp {as_number}",
+            "neighbor {neighbor_ip_address} remote-as {as_number}",
+            "address-family ipv4 unicast",
+            "neighbor {neighbor_ip_address} activate",
+            "end"
+        ]
     }
 }

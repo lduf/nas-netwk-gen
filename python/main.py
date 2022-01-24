@@ -25,6 +25,11 @@ def read_data(filename):
 def routeur_number(routeur_string):
     return re.findall(r'R(\d+)', routeur_string)[0]
 
+def get_neighbor_ip(ip_topology, router, interface):
+    neighbor_name = ip_topology[router]["interfaces"][interface]["neighbor"]["name"]
+    neighbor_interface = ip_topology[router]["interfaces"][interface]["neighbor"]["interface"]
+    return ip_topology[neighbor_name]["interfaces"][neighbor_interface]["parameters"]["ip_address"]
+
 def get_commands_for_routers(ip_topology):
     dict_commands_to_send = {}
     for router in ip_topology:
@@ -116,7 +121,6 @@ def main(topology_file):
 
 if __name__ == '__main__':
     topology_file = args.topology_file
-
 
     # topology = read_data("topology.json")
     # ip_topology = ip_generator.get_ip_topology("topology.json")
