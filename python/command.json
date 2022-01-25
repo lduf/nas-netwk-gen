@@ -89,15 +89,42 @@
             "end"
         ]
     },
+    "bgp_mod" : {
+        "required_config" : [
+            "config_terminal"
+        ],
+        "variables" : [
+            "as_number"
+        ],
+        "command" : [
+            "router bgp {as_number}"
+        ]
+    },
     "bgp" : {
         "required_config" : [
-            "config_interface"
+            "bgp_mod"
         ],
-        "command": [
-            "router bgp {as_number}",
-            "neighbor {neighbor_ip_address} remote-as {as_number}",
+        "variables" : [
+            "router-id"
+        ],
+        "command" : [
+            "bgp router-id {router_id}",
+            "enable",
+            "end"
+        ]
+    },
+    "add_bgp_neighbor" : {
+        "required_config" : [
+            "bgp_mod"
+        ],
+        "variables" : [
+            "neighbor_ip",
+            "neighbor_as_number"
+        ],
+        "command" : [
+            "neighbor {neighbor_ip} remote-as {neighbor_as_number}",
             "address-family ipv4 unicast",
-            "neighbor {neighbor_ip_address} activate",
+            "neighbor {neighbor_ip} activate",
             "end"
         ]
     }

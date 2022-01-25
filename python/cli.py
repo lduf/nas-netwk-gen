@@ -1,6 +1,7 @@
 # Import the necessary packages
 from consolemenu import *
 from consolemenu.items import *
+from sklearn import neighbors
 import ip_generator
 import config
 from tabulate import tabulate
@@ -42,6 +43,11 @@ def read_data(filename):
         data = json.load(json_file)
         return data
 
+def write_data(filename, data):
+    with open(filename, 'w') as outfile:
+        jsonString = json.dumps(topo, indent=4)
+        outfile.write(jsonString)
+
 topo = read_data(args.topology_file)
 
 def routers(topology):
@@ -56,11 +62,11 @@ def interfaces(topology):
         if interface != "Loopback0":
             interface_list.append([interface,topology[interface]["neighbor"]["name"],topology[interface]["ip"]["ip_address"],topology[interface]["protocols"]])
         else :
-            interface_list.append([interface,"Ø",topology[interface]["ip"]["ip_address"], "Ø"])
+            interface_list.append([interface,"Ø",topology[interface]["ip"]["ip_address"], topology[interface]["protocols"]])
     return interface_list
 
 def protocols():
-    protocols = ["ospf", "mpls"]
+    protocols = ["ospf", "mpls", "bgp"]
     return protocols
 
 def echo(text):
@@ -83,6 +89,43 @@ def enable(router, interface, protocol, menu):
     for interface in selected_interfaces[router]:
         menu.prologue_text += f"\n{interface} is selected\n"
     
+def enable_bgp(router, bgprouter, menu2, relation_type = None):
+    (router_interface, bgp_type, neighbor_router_name,neighbor_interface_name, neighbor_as_number, neighbor_ip_address) = bgprouter
+    weight = {"client":100, "peer":200, "provider":300}
+    reverse = {"client":"provider", "peer":"peer", "provider":"client"}
+    topo[router]["interfaces"][router_interface]["parameters"]["neighbor_ip"] = neighbor_ip_address
+    topo[router]["interfaces"][router_interface]["parameters"]["neighbor_as"] = neighbor_as_number
+
+
+    router_ip_address = topo[router]["interfaces"][router_interface]["ip"]["ip_address"]
+    router_as_number = topo[router]["parameters"]["as_number"]
+
+    topo[neighbor_router_name]["interfaces"][neighbor_interface_name]["parameters"]["neighbor_ip"] = router_ip_address
+    topo[neighbor_router_name]["interfaces"][neighbor_interface_name]["parameters"]["neighbor_as"] = router_as_number
+
+    if(bgp_type == "ebgp"):
+        topo[router]["interfaces"][router_interface]["parameters"]["relation_type"] = weight[relation_type]
+        topo[neighbor_router_name]["interfaces"][neighbor_interface_name]["parameters"]["relation_type"] = weight[reverse[relation_type]]
+
+    write_data(args.topology_file, topo)
+
+def add_bgp_neighbor(router, bgprouter):
+    (_, bgp_type, _,_, _, _) = bgprouter
+    if bgp_type == "ebgp" :
+        menu2 = ConsoleMenu("Please select one relation type")
+        #menu2.epilogue_text=("Please select one relation type"),
+        #menu2.prologue_text=("Pleave save your selection and press enter to continue \n"),
+        #menu2.exit_option_text='Save' # Customize the exit text
+        
+        menu2.append_item(FunctionItem("Client", enable_bgp, args=[router,bgprouter, menu2, "client"], should_exit=True))
+        menu2.append_item(FunctionItem("Peer", enable_bgp, args=[router, bgprouter, menu2, "peer"], should_exit=True))
+        menu2.append_item(FunctionItem("Provider", enable_bgp, args=[router, bgprouter, menu2, "provider"], should_exit=True))
+        # Show the menu
+        menu2.show()
+    else:
+        enable_bgp(router, bgprouter, None,None)
+  
+
 def action(router, param, protocol, router_menu, protocol_menu):
     global selected_interfaces, menu, topo
     if param == "interface_name" :
@@ -94,14 +137,11 @@ def action(router, param, protocol, router_menu, protocol_menu):
         for interface in selected_interfaces[router]:
             menu2.prologue_text += f"\n{interface} is selected\n"
         for interface in [x[0] for x in interfaces(topo[router]["interfaces"])] :
-            if interface != "Loopback0":
-                interface = f"{interface}" if interface in selected_interfaces[router] else interface
-                menu2.append_item(FunctionItem(interface, enable, args=[router,interface, protocol, menu2]))
+            interface = f"{interface}" if interface in selected_interfaces[router] else interface
+            menu2.append_item(FunctionItem(interface, enable, args=[router,interface, protocol, menu2]))
         # Show the menu
         menu2.show()
     else :
-
-
         print(f"\nYou are configuring {router} detail\n".format(router))
         #print(router_desc(router))
         print("Current configuration for {}: {}".format(param, topo[router]["parameters"][param] if param in topo[router]["parameters"] else "Ø"))
@@ -113,19 +153,54 @@ def action(router, param, protocol, router_menu, protocol_menu):
     
     router_menu.prologue_text = router_desc(router)
     options_list = config.get_commands_parameters(protocol)
-    protocol_menu.prologue_text = tabulate(topo[router]["parameters"].items(), headers=["Parameter", "Value"])
-    
-    
+    protocol_menu.prologue_text = protocols_desc(router, options_list)
+    write_data(args.topology_file, topo)
     
 
+def intersection(lst1, lst2):
+    return list(set(lst1) & set(lst2))
 
+def protocols_desc(router, protocol_options) :
+    inter = intersection(protocol_options, topo[router]["parameters"].keys())
+    info = {}
+    for options in inter :
+        info[options] = topo[router]["parameters"][options]
+
+    return tabulate(info.items(), headers=["Parameter", "Value"])
 
 def router_desc(router) :
     return tabulate(interfaces(topo[router]["interfaces"]), headers=["Interface", "Router", "IP", "Protocols"])
+
+
+def bgp_neighbors(current_router, routers, neighbors_menu):
+    # The first step is to get all the router in the same AS
+    #The tuple is define like (bgp_type, router_name, as_number, ip_address)
+    if "as_number" not in topo[current_router]["parameters"].keys():
+        neighbors_menu.prologue_text = "You need to configure the AS number before adding BGP neighbors"
+        return []
+    else :
+        current_as = topo[current_router]["parameters"]["as_number"]
+    bgp_neighbors = []
+    for router in routers:
+        if router != current_router:
+            if "as_number" in topo[router]["parameters"].keys() and  topo[router]["parameters"]["as_number"] == current_as:
+                    bgp_neighbors.append(("Loopback0","ibgp", router, "Loopback0", current_as, topo[router]["interfaces"]["Loopback0"]["ip"]["ip_address"]))
+    
+    for interface in topo[current_router]["interfaces"]:
+        if interface != "Loopback0":
+            neighbor = topo[current_router]["interfaces"][interface]["neighbor"]
+            if "as_number" in topo[neighbor["name"]]["parameters"].keys() and topo[neighbor["name"]]["parameters"]["as_number"] != current_as:
+                bgp_neighbors.append((interface,"ebgp", neighbor["name"], neighbor["interface"],topo[neighbor["name"]]["parameters"]["as_number"], topo[neighbor["name"]]["interfaces"][neighbor["interface"]]["ip"]["ip_address"]))
+
+    return bgp_neighbors
+
+
 if __name__ == '__main__':
     
+  
+
    #router_selection_menu = SelectionMenu(routers(topo))
-    router_selection_menu = SelectionMenu("")
+    router_selection_menu = SelectionMenu("") # Router selection menu : première page sur laquelle tous les autres menus sont attachés. On y voit la liste des routers
     router_selection_menu.title = "Choose a router"
 
     i =0
@@ -136,14 +211,25 @@ if __name__ == '__main__':
     param_menu = [[]]
     protocol_submenu = [[]]
     protocols_selection_submenu = []
+    bgp_neighbor_selection = []
+    bgp_neighbor_submenu = [[]]
+
+    '''
+    Profondeur des menus :
+    router_selection_menu
+        router_menu
+            
+
+    '''
+    
     for router in routers(topo):
         selected_interfaces[router] = set()
         # Creating a submenu for each router
 
-        router_menu.append(ConsoleMenu(router, f"Please configure the {router} router")) # Creating a submenu for a router
-        router_menu[i].prologue_text = router_desc(router)
+        router_menu.append(ConsoleMenu(router, f"Please configure the {router} router")) # Creating a submenu for a router : on y voit les options de configuration pour un routeur donné
+        router_menu[i].prologue_text = router_desc(router) # Description du routeur courrant
      
-        router_submenu.append(SubmenuItem(router, router_menu[i], router_selection_menu)) # Creating a submenu for each router
+        router_submenu.append(SubmenuItem(router, router_menu[i], router_selection_menu)) # On ajoute le sous menu du routeur courrant à la liste des sous menus du menu principal
         router_selection_menu.append_item(router_submenu[i]) # Adding the submenu to the main menu
         
         # Creating a submenu for each protocols
@@ -151,17 +237,37 @@ if __name__ == '__main__':
         protocols_selection_menu[i].title = "Choose a protocol for {}".format(router)
         
         j = 0
-        for protocol in protocols():
+        for protocol in protocols(): # Creating a submenu for each protocol
             protocol_menu.append([])
             protocol_menu[i].append(ConsoleMenu())
             protocol_menu[i][j].title = f"{protocol} options"
-            options_list = config.get_commands_parameters(protocol)
-            protocol_menu[i][j].prologue_text = tabulate(topo[router]["parameters"].items(), headers=["Parameter", "Value"])
+
+            options_list = config.get_commands_parameters(protocol) # Getting the list of options for a protocol
+            protocol_menu[i][j].prologue_text = protocols_desc(router, options_list) # Current parameters for the protocol
+            # TODO : display only the options that are relevant for the protocol
+
             
-            for param in options_list:
+
+            for param in options_list: # For each option of the protocol
                 param_menu.append([])
-                param_menu[i].append(FunctionItem(param, action, args=[router, param, protocol, router_menu[i], protocol_menu[i][j]]))
+                param_menu[i].append(FunctionItem(param, action, args=[router, param, protocol, router_menu[i], protocol_menu[i][j]])) # adding the option to the submenu. It refers to the action function which will display the option and ask the user to fill the detail
+                protocol_menu[i][j].append_item(param_menu[i][-1]) # Adding the option to the submenu
+                
+            if protocol == "bgp": ## Si le protocole est bgp, on ajoute les paramètres de bgp et on ajoute un sous menu qui contient les voisins
+                bgp_neighbor_selection.append(ConsoleMenu("")) # Sous menu pour les voisins disponibles
+                bgp_neighbor_selection[-1].title = f"{protocol} options - please choose a neighbor"
+                
+                bgp_neighbor_submenu.append([])
+                for bgprouter in bgp_neighbors(router,routers(topo),bgp_neighbor_selection[-1]): # On ajoute les voisins disponibles
+                    (router_interface, bgp_type, neighbor_router_name,neighbor_interface_name, neighbor_as_number, neighbor_ip_address) = bgprouter
+                    desc = f"({bgp_type}) neighbor {neighbor_router_name} AS {neighbor_as_number} with IP {neighbor_ip_address}"
+                    bgp_neighbor_submenu[i].append(FunctionItem(desc, add_bgp_neighbor, args=[router, bgprouter]))
+                    bgp_neighbor_selection[-1].append_item(bgp_neighbor_submenu[i][-1])
+                
+                param_menu[i].append(SubmenuItem("Add neighbor",bgp_neighbor_selection[i], protocol_menu[i][j]))
                 protocol_menu[i][j].append_item(param_menu[i][-1])
+                #bgp_neighbor_selection[-1].append_item(protocol_menu[i][j])
+
             protocol_submenu.append([])
             protocol_submenu[i].append(SubmenuItem(protocol, protocol_menu[i][j], protocols_selection_menu[i]))
             protocols_selection_menu[i].append_item(protocol_submenu[i][j])
@@ -184,9 +290,4 @@ if __name__ == '__main__':
     # Finally, we call show to show the menu and allow the user to interact
     menu.show()
    
-
-    jsonString = json.dumps(topo, indent=4)
-    fileName = args.topology_file
-    file = open(fileName, "w")
-    file.write(jsonString)
-    file.close()
+    write_data(args.topology_file, topo)

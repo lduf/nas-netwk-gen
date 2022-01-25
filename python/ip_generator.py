@@ -77,6 +77,7 @@ def generate_ip_topology(topology_file):
 
         # ajout de la loopback
         data_json[router]["interfaces"]["Loopback0"] = {}
+        #data_json[router]["interfaces"]["Loopback0"]["parameters"] = {}
         data_json[router]["interfaces"]["Loopback0"]["ip"] = {}
         data_json[router]["interfaces"]["Loopback0"]["ip"]["ip_address"] = "{0}.{0}.{0}.{0}".format(num_router_act)
         data_json[router]["interfaces"]["Loopback0"]["ip"]["mask"] = loopback_netmask
