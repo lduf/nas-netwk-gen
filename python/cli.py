@@ -89,7 +89,7 @@ def enable(router, interface, protocol, menu):
     for interface in selected_interfaces[router]:
         menu.prologue_text += f"\n{interface} is selected\n"
     
-def enable_bgp(router, bgprouter, menu2, relation_type = None):
+def enable_bgp(router, bgprouter, menu2, relation_type = "peer"):
     (router_interface, bgp_type, neighbor_router_name,neighbor_interface_name, neighbor_as_number, neighbor_ip_address) = bgprouter
     weight = {"client":100, "peer":200, "provider":300}
     reverse = {"client":"provider", "peer":"peer", "provider":"client"}
@@ -103,9 +103,8 @@ def enable_bgp(router, bgprouter, menu2, relation_type = None):
     topo[neighbor_router_name]["interfaces"][neighbor_interface_name]["parameters"]["neighbor_ip"] = router_ip_address
     topo[neighbor_router_name]["interfaces"][neighbor_interface_name]["parameters"]["neighbor_as"] = router_as_number
 
-    if(bgp_type == "ebgp"):
-        topo[router]["interfaces"][router_interface]["parameters"]["relation_type"] = weight[relation_type]
-        topo[neighbor_router_name]["interfaces"][neighbor_interface_name]["parameters"]["relation_type"] = weight[reverse[relation_type]]
+    topo[router]["interfaces"][router_interface]["parameters"]["relation_type"] = weight[relation_type]
+    topo[neighbor_router_name]["interfaces"][neighbor_interface_name]["parameters"]["relation_type"] = weight[reverse[relation_type]]
 
     write_data(args.topology_file, topo)
 
@@ -123,7 +122,7 @@ def add_bgp_neighbor(router, bgprouter):
         # Show the menu
         menu2.show()
     else:
-        enable_bgp(router, bgprouter, None,None)
+        enable_bgp(router, bgprouter, "peer",None)
   
 
 def action(router, param, protocol, router_menu, protocol_menu):
