@@ -75,12 +75,13 @@ def generate_ip_topology(topology_file):
                     # incrémenter le numéro de subdomain
                     subdomain += 1
 
-        # ajout de la loopback
-        data_json[router]["interfaces"]["Loopback0"] = {}
-        #data_json[router]["interfaces"]["Loopback0"]["parameters"] = {}
-        data_json[router]["interfaces"]["Loopback0"]["ip"] = {}
-        data_json[router]["interfaces"]["Loopback0"]["ip"]["ip_address"] = "{0}.{0}.{0}.{0}".format(num_router_act)
-        data_json[router]["interfaces"]["Loopback0"]["ip"]["mask"] = loopback_netmask
+        if "Loopback0" not in data_json[router]["interfaces"]:
+            # ajout de la loopback
+            data_json[router]["interfaces"]["Loopback0"] = {}
+            #data_json[router]["interfaces"]["Loopback0"]["parameters"] = {}
+            data_json[router]["interfaces"]["Loopback0"]["ip"] = {}
+            data_json[router]["interfaces"]["Loopback0"]["ip"]["ip_address"] = "{0}.{0}.{0}.{0}".format(num_router_act)
+            data_json[router]["interfaces"]["Loopback0"]["ip"]["mask"] = loopback_netmask
 
     data_json = add_parameters_interface(data_json)
     write_data(topology_file, data_json)

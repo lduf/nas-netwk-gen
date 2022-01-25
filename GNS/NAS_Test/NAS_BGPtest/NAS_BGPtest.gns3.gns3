@@ -1017,7 +1017,7 @@
                     "dynamips_id": 5,
                     "exec_area": 64,
                     "idlemax": 500,
-                    "idlepc": "",
+                    "idlepc": "0x0",
                     "idlesleep": 30,
                     "image": "c7200-advipservicesk9-mz.152-4.S5.image",
                     "image_md5sum": "cbbbea66a253f1dac0fcf81274dc778d",
@@ -1052,8 +1052,8 @@
                 "symbol": ":/symbols/router.svg",
                 "template_id": "ea5c5303-dace-4499-a85d-e7d28d2d4531",
                 "width": 66,
-                "x": -458,
-                "y": 76,
+                "x": -460,
+                "y": 75,
                 "z": 1
             },
             {

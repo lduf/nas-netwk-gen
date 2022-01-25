@@ -108,22 +108,19 @@
             "router-id"
         ],
         "command" : [
-            "bgp router-id {router_id}",
-            "enable",
-            "end"
+            "bgp router-id {router_id}"
         ]
     },
     "bgp" : {
         "required_config" : [
-            "bgp_mod",
             "bgp_en"
         ],
         "variables" : [
             "neighbor_ip",
-            "neighbor_as_number"
+            "neighbor_as"
         ],
         "command" : [
-            "neighbor {neighbor_ip} remote-as {neighbor_as_number}",
+            "neighbor {neighbor_ip} remote-as {neighbor_as}",
             "address-family ipv4 unicast",
             "neighbor {neighbor_ip} activate",
             "end"

@@ -1,7 +1,7 @@
 # Import the necessary packages
 from consolemenu import *
 from consolemenu.items import *
-from sklearn import neighbors
+#from sklearn import neighbors
 import ip_generator
 import config
 from tabulate import tabulate
