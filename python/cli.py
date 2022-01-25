@@ -66,7 +66,7 @@ def interfaces(topology):
     return interface_list
 
 def protocols():
-    protocols = ["ospf", "mpls", "bgp"]
+    protocols = ["ospf", "mpls", "bgp_en"]
     return protocols
 
 def echo(text):
@@ -89,26 +89,27 @@ def enable(router, interface, protocol, menu):
     for interface in selected_interfaces[router]:
         menu.prologue_text += f"\n{interface} is selected\n"
     
-def enable_bgp(router, bgprouter, menu2, relation_type = "peer"):
+def enable_bgp(router, bgprouter, menu2, relation_type="peer"):
     (router_interface, bgp_type, neighbor_router_name,neighbor_interface_name, neighbor_as_number, neighbor_ip_address) = bgprouter
     weight = {"client":100, "peer":200, "provider":300}
     reverse = {"client":"provider", "peer":"peer", "provider":"client"}
+
     topo[router]["interfaces"][router_interface]["parameters"]["neighbor_ip"] = neighbor_ip_address
     topo[router]["interfaces"][router_interface]["parameters"]["neighbor_as"] = neighbor_as_number
-
+    topo[router]["interfaces"][router_interface]["protocols"].append("bgp")
+    topo[router]["interfaces"][router_interface]["parameters"]["relation_type"] = weight[relation_type]
 
     router_ip_address = topo[router]["interfaces"][router_interface]["ip"]["ip_address"]
     router_as_number = topo[router]["parameters"]["as_number"]
 
     topo[neighbor_router_name]["interfaces"][neighbor_interface_name]["parameters"]["neighbor_ip"] = router_ip_address
     topo[neighbor_router_name]["interfaces"][neighbor_interface_name]["parameters"]["neighbor_as"] = router_as_number
-
-    topo[router]["interfaces"][router_interface]["parameters"]["relation_type"] = weight[relation_type]
+    topo[neighbor_router_name]["interfaces"][neighbor_interface_name]["protocols"].append("bgp")
     topo[neighbor_router_name]["interfaces"][neighbor_interface_name]["parameters"]["relation_type"] = weight[reverse[relation_type]]
 
     write_data(args.topology_file, topo)
 
-def add_bgp_neighbor(router, bgprouter):
+def add_bgp_neighbor(router, bgprouter, router_menu, protocol_menu):
     (_, bgp_type, _,_, _, _) = bgprouter
     if bgp_type == "ebgp" :
         menu2 = ConsoleMenu("Please select one relation type")
@@ -122,7 +123,8 @@ def add_bgp_neighbor(router, bgprouter):
         # Show the menu
         menu2.show()
     else:
-        enable_bgp(router, bgprouter, "peer",None)
+        enable_bgp(router, bgprouter, None, "peer")
+    router_menu.prologue_text = router_desc(router)
   
 
 def action(router, param, protocol, router_menu, protocol_menu):
@@ -252,7 +254,7 @@ if __name__ == '__main__':
                 param_menu[i].append(FunctionItem(param, action, args=[router, param, protocol, router_menu[i], protocol_menu[i][j]])) # adding the option to the submenu. It refers to the action function which will display the option and ask the user to fill the detail
                 protocol_menu[i][j].append_item(param_menu[i][-1]) # Adding the option to the submenu
                 
-            if protocol == "bgp": ## Si le protocole est bgp, on ajoute les paramètres de bgp et on ajoute un sous menu qui contient les voisins
+            if protocol == "bgp_en": ## Si le protocole est bgp, on ajoute les paramètres de bgp et on ajoute un sous menu qui contient les voisins
                 bgp_neighbor_selection.append(ConsoleMenu("")) # Sous menu pour les voisins disponibles
                 bgp_neighbor_selection[-1].title = f"{protocol} options - please choose a neighbor"
                 
@@ -260,7 +262,7 @@ if __name__ == '__main__':
                 for bgprouter in bgp_neighbors(router,routers(topo),bgp_neighbor_selection[-1]): # On ajoute les voisins disponibles
                     (router_interface, bgp_type, neighbor_router_name,neighbor_interface_name, neighbor_as_number, neighbor_ip_address) = bgprouter
                     desc = f"({bgp_type}) neighbor {neighbor_router_name} AS {neighbor_as_number} with IP {neighbor_ip_address}"
-                    bgp_neighbor_submenu[i].append(FunctionItem(desc, add_bgp_neighbor, args=[router, bgprouter]))
+                    bgp_neighbor_submenu[i].append(FunctionItem(desc, add_bgp_neighbor, args=[router, bgprouter,router_menu[i], protocol_menu[i][j]]))
                     bgp_neighbor_selection[-1].append_item(bgp_neighbor_submenu[i][-1])
                 
                 param_menu[i].append(SubmenuItem("Add neighbor",bgp_neighbor_selection[i], protocol_menu[i][j]))

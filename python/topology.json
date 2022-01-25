@@ -57,7 +57,8 @@
                 "protocols": [
                     "ip_address",
                     "mpls",
-                    "ospf"
+                    "ospf",
+                    "bgp"
                 ],
                 "parameters": {
                     "ip_address": "10.0.3.1",
@@ -65,7 +66,7 @@
                     "interface_name": "GigabitEthernet3/0",
                     "neighbor_ip": "10.0.3.5",
                     "neighbor_as": "500",
-                    "relation_type": 100
+                    "relation_type": 300
                 },
                 "ip": {
                     "ip_address": "10.0.3.1",
@@ -82,11 +83,13 @@
                     "mask": "255.255.255.255",
                     "interface_name": "Loopback0",
                     "neighbor_ip": "2.2.2.2",
-                    "neighbor_as": "100"
+                    "neighbor_as": "100",
+                    "relation_type": 200
                 },
                 "protocols": [
                     "ip_address",
-                    "ospf"
+                    "ospf",
+                    "bgp"
                 ]
             }
         }
@@ -171,10 +174,12 @@
                     "mask": "255.255.255.255",
                     "interface_name": "Loopback0",
                     "neighbor_ip": "1.1.1.1",
-                    "neighbor_as": "100"
+                    "neighbor_as": "100",
+                    "relation_type": 200
                 },
                 "protocols": [
-                    "ip_address"
+                    "ip_address",
+                    "bgp"
                 ]
             }
         }
@@ -352,7 +357,8 @@
                     "interface": "GigabitEthernet3/0"
                 },
                 "protocols": [
-                    "ip_address"
+                    "ip_address",
+                    "bgp"
                 ],
                 "parameters": {
                     "ip_address": "10.0.3.5",
@@ -360,7 +366,7 @@
                     "interface_name": "GigabitEthernet1/0",
                     "neighbor_ip": "10.0.3.1",
                     "neighbor_as": "100",
-                    "relation_type": 300
+                    "relation_type": 100
                 },
                 "ip": {
                     "ip_address": "10.0.3.5",

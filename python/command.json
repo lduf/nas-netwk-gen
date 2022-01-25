@@ -100,7 +100,7 @@
             "router bgp {as_number}"
         ]
     },
-    "bgp" : {
+    "bgp_en" : {
         "required_config" : [
             "bgp_mod"
         ],
@@ -113,9 +113,10 @@
             "end"
         ]
     },
-    "add_bgp_neighbor" : {
+    "bgp" : {
         "required_config" : [
-            "bgp_mod"
+            "bgp_mod",
+            "bgp_en"
         ],
         "variables" : [
             "neighbor_ip",
