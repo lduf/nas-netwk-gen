@@ -1,0 +1,62 @@
+Jan 26 13:25:53.299 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Jan 26 13:25:53.299 HYPERVISOR: Started on TCP port = 54474.
+Jan 26 13:25:53.717 HYPERVISOR: exec_cmd: hypervisor version 
+Jan 26 13:25:53.719 HYPERVISOR: exec_cmd: hypervisor working_dir D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips 
+Jan 26 13:25:53.719 GENERAL: working_dir=D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips
+Jan 26 13:25:53.719 HYPERVISOR: exec_cmd: hypervisor working_dir D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips\380a5cd9-63b9-451d-a830-03fbc18a4db4 
+Jan 26 13:25:53.719 GENERAL: working_dir=D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips\380a5cd9-63b9-451d-a830-03fbc18a4db4
+Jan 26 13:25:53.724 HYPERVISOR: exec_cmd: vm create R4 4 c7200 
+Jan 26 13:25:53.725 VM: VM R4 created.
+Jan 26 13:25:53.725 HYPERVISOR: exec_cmd: vm set_con_tcp_port R4 6003 
+Jan 26 13:25:53.732 HYPERVISOR: exec_cmd: c7200 get_mac_addr R4 
+Jan 26 13:25:53.733 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 26 13:25:53.734 HYPERVISOR: exec_cmd: vm slot_add_binding R4 0 0 C7200-IO-FE 
+Jan 26 13:25:53.735 HYPERVISOR: exec_cmd: vm set_disk0 R4 0 
+Jan 26 13:25:53.739 HYPERVISOR: exec_cmd: vm set_exec_area R4 64 
+Jan 26 13:25:53.739 HYPERVISOR: exec_cmd: vm set_ios R4 C:/Users/Celia/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 26 13:25:53.739 HYPERVISOR: exec_cmd: c7200 set_mac_addr R4 ca04.2fcc.0000 
+Jan 26 13:25:53.746 HYPERVISOR: exec_cmd: vm set_nvram R4 512 
+Jan 26 13:25:53.746 HYPERVISOR: exec_cmd: vm set_ram R4 512 
+Jan 26 13:25:53.749 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 26 13:25:53.750 HYPERVISOR: exec_cmd: vm slot_add_binding R4 1 0 PA-GE 
+Jan 26 13:25:53.750 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 26 13:25:53.753 HYPERVISOR: exec_cmd: vm slot_add_binding R4 2 0 PA-GE 
+Jan 26 13:25:53.754 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 26 13:25:53.756 HYPERVISOR: exec_cmd: vm slot_add_binding R4 3 0 PA-GE 
+Jan 26 13:25:58.639 HYPERVISOR: exec_cmd: nio create_udp udp-9b247abe-2614-4dea-a1dc-036baf514794 10010 127.0.0.1 10011 
+Jan 26 13:25:58.931 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R4 3 0 udp-9b247abe-2614-4dea-a1dc-036baf514794 
+Jan 26 13:25:58.933 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 26 13:26:00.605 HYPERVISOR: exec_cmd: nio create_udp udp-a81e2a07-97d7-49c0-a512-f0c9ca3609a6 10040 127.0.0.1 10041 
+Jan 26 13:26:00.611 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R4 1 0 udp-a81e2a07-97d7-49c0-a512-f0c9ca3609a6 
+Jan 26 13:26:00.612 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 26 13:26:00.718 HYPERVISOR: exec_cmd: nio create_udp udp-f031e694-66c0-456c-a474-1737db103b7b 10044 127.0.0.1 10045 
+Jan 26 13:26:00.723 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R4 2 0 udp-f031e694-66c0-456c-a474-1737db103b7b 
+Jan 26 13:26:00.724 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 26 13:40:50.149 HYPERVISOR: exec_cmd: vm set_ghost_status R4 2 
+Jan 26 13:40:50.149 HYPERVISOR: exec_cmd: vm set_ghost_file R4 D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
+Jan 26 13:40:50.157 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 26 13:40:50.159 HYPERVISOR: exec_cmd: vm set_config R4 configs\i4_startup-config.cfg 
+Jan 26 13:40:50.161 HYPERVISOR: exec_cmd: vm start R4 
+Jan 26 13:41:20.574 HYPERVISOR: exec_cmd: vm extract_config R4 
+Jan 26 14:41:09.192 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 26 14:41:09.192 HYPERVISOR: exec_cmd: vm stop R4 
+Jan 26 14:41:09.583 VM: VM R4 shutdown.
+Jan 26 14:41:09.583 HYPERVISOR: exec_cmd: vm extract_config R4 
+Jan 26 14:44:05.790 HYPERVISOR: exec_cmd: vm set_ghost_status R4 2 
+Jan 26 14:44:05.790 HYPERVISOR: exec_cmd: vm set_ghost_file R4 D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
+Jan 26 14:44:05.790 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 26 14:44:05.790 HYPERVISOR: exec_cmd: vm set_config R4 configs\i4_startup-config.cfg 
+Jan 26 14:44:05.790 HYPERVISOR: exec_cmd: vm start R4 
+Jan 26 14:54:41.234 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 26 14:54:41.234 HYPERVISOR: exec_cmd: vm stop R4 
+Jan 26 14:54:41.499 VM: VM R4 shutdown.
+Jan 26 14:54:41.499 HYPERVISOR: exec_cmd: vm extract_config R4 
+Jan 26 14:55:00.906 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 26 14:55:00.908 HYPERVISOR: exec_cmd: vm extract_config R4 
+Jan 26 14:55:01.214 HYPERVISOR: exec_cmd: vm get_status R4 
+Jan 26 14:55:01.216 HYPERVISOR: exec_cmd: vm extract_config R4 
+Jan 26 14:55:01.221 HYPERVISOR: exec_cmd: vm delete R4 
+Jan 26 14:55:01.221 VM: VM R4 destroyed.
+Jan 26 14:55:01.224 HYPERVISOR: exec_cmd: hypervisor stop 
+Jan 26 14:55:01.645 HYPERVISOR: Stopped.
+Jan 26 14:55:01.646 GENERAL: reset done.

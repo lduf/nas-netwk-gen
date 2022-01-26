@@ -1,0 +1,62 @@
+Jan 26 13:25:55.181 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Jan 26 13:25:55.182 HYPERVISOR: Started on TCP port = 54483.
+Jan 26 13:25:55.633 HYPERVISOR: exec_cmd: hypervisor version 
+Jan 26 13:25:55.634 HYPERVISOR: exec_cmd: hypervisor working_dir D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips 
+Jan 26 13:25:55.635 GENERAL: working_dir=D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips
+Jan 26 13:25:55.635 HYPERVISOR: exec_cmd: hypervisor working_dir D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips\6343c9d7-2486-430c-9768-d459bb3858cd 
+Jan 26 13:25:55.635 GENERAL: working_dir=D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips\6343c9d7-2486-430c-9768-d459bb3858cd
+Jan 26 13:25:55.639 HYPERVISOR: exec_cmd: vm create R7 7 c7200 
+Jan 26 13:25:55.640 VM: VM R7 created.
+Jan 26 13:25:55.640 HYPERVISOR: exec_cmd: vm set_con_tcp_port R7 6006 
+Jan 26 13:25:55.648 HYPERVISOR: exec_cmd: c7200 get_mac_addr R7 
+Jan 26 13:25:55.649 HYPERVISOR: exec_cmd: vm get_status R7 
+Jan 26 13:25:55.650 HYPERVISOR: exec_cmd: vm slot_add_binding R7 0 0 C7200-IO-FE 
+Jan 26 13:25:55.653 HYPERVISOR: exec_cmd: vm set_disk0 R7 0 
+Jan 26 13:25:55.655 HYPERVISOR: exec_cmd: vm set_exec_area R7 64 
+Jan 26 13:25:55.657 HYPERVISOR: exec_cmd: vm set_ios R7 C:/Users/Celia/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 26 13:25:55.657 HYPERVISOR: exec_cmd: c7200 set_mac_addr R7 ca07.15dc.0000 
+Jan 26 13:25:55.664 HYPERVISOR: exec_cmd: vm set_nvram R7 512 
+Jan 26 13:25:55.666 HYPERVISOR: exec_cmd: vm set_ram R7 512 
+Jan 26 13:25:55.668 HYPERVISOR: exec_cmd: vm get_status R7 
+Jan 26 13:25:55.669 HYPERVISOR: exec_cmd: vm slot_add_binding R7 1 0 PA-GE 
+Jan 26 13:25:55.670 HYPERVISOR: exec_cmd: vm get_status R7 
+Jan 26 13:25:55.672 HYPERVISOR: exec_cmd: vm slot_add_binding R7 2 0 PA-GE 
+Jan 26 13:25:55.673 HYPERVISOR: exec_cmd: vm get_status R7 
+Jan 26 13:25:55.675 HYPERVISOR: exec_cmd: vm slot_add_binding R7 3 0 PA-GE 
+Jan 26 13:26:01.321 HYPERVISOR: exec_cmd: nio create_udp udp-0a6467ff-9626-48ea-b816-f38505773d32 10058 127.0.0.1 10059 
+Jan 26 13:26:01.657 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R7 1 0 udp-0a6467ff-9626-48ea-b816-f38505773d32 
+Jan 26 13:26:01.658 HYPERVISOR: exec_cmd: vm get_status R7 
+Jan 26 13:26:01.784 HYPERVISOR: exec_cmd: nio create_udp udp-7b6b098e-e822-4f5f-8df3-4c31d0e85eda 10062 127.0.0.1 10063 
+Jan 26 13:26:01.788 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R7 0 0 udp-7b6b098e-e822-4f5f-8df3-4c31d0e85eda 
+Jan 26 13:26:01.789 HYPERVISOR: exec_cmd: vm get_status R7 
+Jan 26 13:26:25.981 HYPERVISOR: exec_cmd: vm get_status R7 
+Jan 26 13:26:25.986 HYPERVISOR: exec_cmd: vm slot_remove_nio_binding R7 0 0 
+Jan 26 13:26:25.990 HYPERVISOR: exec_cmd: nio delete udp-7b6b098e-e822-4f5f-8df3-4c31d0e85eda 
+Jan 26 13:40:51.087 HYPERVISOR: exec_cmd: vm set_ghost_status R7 2 
+Jan 26 13:40:51.090 HYPERVISOR: exec_cmd: vm set_ghost_file R7 D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
+Jan 26 13:40:51.092 HYPERVISOR: exec_cmd: vm get_status R7 
+Jan 26 13:40:51.092 HYPERVISOR: exec_cmd: vm set_config R7 configs\i7_startup-config.cfg 
+Jan 26 13:40:51.156 HYPERVISOR: exec_cmd: vm start R7 
+Jan 26 13:41:21.655 HYPERVISOR: exec_cmd: vm extract_config R7 
+Jan 26 14:41:09.598 HYPERVISOR: exec_cmd: vm get_status R7 
+Jan 26 14:41:09.676 HYPERVISOR: exec_cmd: vm stop R7 
+Jan 26 14:41:09.879 VM: VM R7 shutdown.
+Jan 26 14:41:09.879 HYPERVISOR: exec_cmd: vm extract_config R7 
+Jan 26 14:44:06.103 HYPERVISOR: exec_cmd: vm set_ghost_status R7 2 
+Jan 26 14:44:06.103 HYPERVISOR: exec_cmd: vm set_ghost_file R7 D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
+Jan 26 14:44:06.103 HYPERVISOR: exec_cmd: vm get_status R7 
+Jan 26 14:44:06.103 HYPERVISOR: exec_cmd: vm set_config R7 configs\i7_startup-config.cfg 
+Jan 26 14:44:06.103 HYPERVISOR: exec_cmd: vm start R7 
+Jan 26 14:54:41.515 HYPERVISOR: exec_cmd: vm get_status R7 
+Jan 26 14:54:41.515 HYPERVISOR: exec_cmd: vm stop R7 
+Jan 26 14:54:41.765 VM: VM R7 shutdown.
+Jan 26 14:54:41.765 HYPERVISOR: exec_cmd: vm extract_config R7 
+Jan 26 14:55:00.920 HYPERVISOR: exec_cmd: vm get_status R7 
+Jan 26 14:55:00.921 HYPERVISOR: exec_cmd: vm extract_config R7 
+Jan 26 14:55:01.212 HYPERVISOR: exec_cmd: vm get_status R7 
+Jan 26 14:55:01.215 HYPERVISOR: exec_cmd: vm extract_config R7 
+Jan 26 14:55:01.218 HYPERVISOR: exec_cmd: vm delete R7 
+Jan 26 14:55:01.218 VM: VM R7 destroyed.
+Jan 26 14:55:01.222 HYPERVISOR: exec_cmd: hypervisor stop 
+Jan 26 14:55:01.643 HYPERVISOR: Stopped.
+Jan 26 14:55:01.644 GENERAL: reset done.

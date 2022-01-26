@@ -1,0 +1,77 @@
+Jan 26 13:25:54.557 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Jan 26 13:25:54.559 HYPERVISOR: Started on TCP port = 54480.
+Jan 26 13:25:54.998 HYPERVISOR: exec_cmd: hypervisor version 
+Jan 26 13:25:54.999 HYPERVISOR: exec_cmd: hypervisor working_dir D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips 
+Jan 26 13:25:55.000 GENERAL: working_dir=D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips
+Jan 26 13:25:55.003 HYPERVISOR: exec_cmd: hypervisor working_dir D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips\c4855de5-2115-459a-990d-515884948e34 
+Jan 26 13:25:55.003 GENERAL: working_dir=D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips\c4855de5-2115-459a-990d-515884948e34
+Jan 26 13:25:55.005 HYPERVISOR: exec_cmd: vm create R6 6 c7200 
+Jan 26 13:25:55.010 VM: VM R6 created.
+Jan 26 13:25:55.012 HYPERVISOR: exec_cmd: vm set_con_tcp_port R6 6005 
+Jan 26 13:25:55.013 HYPERVISOR: exec_cmd: c7200 get_mac_addr R6 
+Jan 26 13:25:55.014 HYPERVISOR: exec_cmd: vm get_status R6 
+Jan 26 13:25:55.017 HYPERVISOR: exec_cmd: vm slot_add_binding R6 0 0 C7200-IO-FE 
+Jan 26 13:25:55.019 HYPERVISOR: exec_cmd: vm set_disk0 R6 0 
+Jan 26 13:25:55.021 HYPERVISOR: exec_cmd: vm set_exec_area R6 64 
+Jan 26 13:25:55.025 HYPERVISOR: exec_cmd: vm set_ios R6 C:/Users/Celia/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 26 13:25:55.027 HYPERVISOR: exec_cmd: c7200 set_mac_addr R6 ca06.2bd4.0000 
+Jan 26 13:25:55.029 HYPERVISOR: exec_cmd: vm set_nvram R6 512 
+Jan 26 13:25:55.031 HYPERVISOR: exec_cmd: vm set_ram R6 512 
+Jan 26 13:25:55.033 HYPERVISOR: exec_cmd: vm get_status R6 
+Jan 26 13:25:55.034 HYPERVISOR: exec_cmd: vm slot_add_binding R6 1 0 PA-GE 
+Jan 26 13:25:55.035 HYPERVISOR: exec_cmd: vm get_status R6 
+Jan 26 13:25:55.035 HYPERVISOR: exec_cmd: vm slot_add_binding R6 2 0 PA-GE 
+Jan 26 13:25:55.039 HYPERVISOR: exec_cmd: vm get_status R6 
+Jan 26 13:25:55.040 HYPERVISOR: exec_cmd: vm slot_add_binding R6 3 0 PA-GE 
+Jan 26 13:26:00.122 HYPERVISOR: exec_cmd: nio create_udp udp-619a25be-dfc9-4fc0-8371-12a8c302d2f0 10034 127.0.0.1 10035 
+Jan 26 13:26:00.437 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R6 1 0 udp-619a25be-dfc9-4fc0-8371-12a8c302d2f0 
+Jan 26 13:26:00.440 HYPERVISOR: exec_cmd: vm get_status R6 
+Jan 26 13:26:00.739 HYPERVISOR: exec_cmd: nio create_udp udp-6ca1a3df-1576-4356-b1ba-319e0cec7014 10046 127.0.0.1 10047 
+Jan 26 13:26:00.746 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R6 2 0 udp-6ca1a3df-1576-4356-b1ba-319e0cec7014 
+Jan 26 13:26:00.747 HYPERVISOR: exec_cmd: vm get_status R6 
+Jan 26 13:26:00.848 HYPERVISOR: exec_cmd: nio create_udp udp-a1657f75-35e7-4918-afc4-ef3bee4b1532 10050 127.0.0.1 10051 
+Jan 26 13:26:00.853 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R6 3 0 udp-a1657f75-35e7-4918-afc4-ef3bee4b1532 
+Jan 26 13:26:00.853 HYPERVISOR: exec_cmd: vm get_status R6 
+Jan 26 13:32:33.082 HYPERVISOR: exec_cmd: nio create_udp udp-fdd23797-5ebf-4c68-a214-e5dc947dbe37 10064 127.0.0.1 10065 
+Jan 26 13:32:33.092 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R6 0 0 udp-fdd23797-5ebf-4c68-a214-e5dc947dbe37 
+Jan 26 13:32:33.092 HYPERVISOR: exec_cmd: vm get_status R6 
+Jan 26 13:38:07.787 HYPERVISOR: exec_cmd: vm get_status R6 
+Jan 26 13:38:07.790 HYPERVISOR: exec_cmd: vm slot_remove_nio_binding R6 0 0 
+Jan 26 13:38:07.794 HYPERVISOR: exec_cmd: nio delete udp-fdd23797-5ebf-4c68-a214-e5dc947dbe37 
+Jan 26 13:38:32.743 HYPERVISOR: exec_cmd: nio create_udp udp-2f4b5435-a59e-447f-b9cb-da0db2f578b9 10064 127.0.0.1 10065 
+Jan 26 13:38:32.753 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R6 0 0 udp-2f4b5435-a59e-447f-b9cb-da0db2f578b9 
+Jan 26 13:38:32.754 HYPERVISOR: exec_cmd: vm get_status R6 
+Jan 26 13:40:50.208 HYPERVISOR: exec_cmd: vm set_ghost_status R6 2 
+Jan 26 13:40:50.208 HYPERVISOR: exec_cmd: vm set_ghost_file R6 D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
+Jan 26 13:40:50.213 HYPERVISOR: exec_cmd: vm get_status R6 
+Jan 26 13:40:50.215 HYPERVISOR: exec_cmd: vm set_config R6 configs\i6_startup-config.cfg 
+Jan 26 13:40:50.215 HYPERVISOR: exec_cmd: vm start R6 
+Jan 26 13:41:20.574 HYPERVISOR: exec_cmd: vm extract_config R6 
+Jan 26 14:25:12.217 HYPERVISOR: exec_cmd: vm extract_config R6 
+Jan 26 14:41:09.317 HYPERVISOR: exec_cmd: vm get_status R6 
+Jan 26 14:41:09.317 HYPERVISOR: exec_cmd: vm stop R6 
+Jan 26 14:41:09.692 VM: VM R6 shutdown.
+Jan 26 14:41:09.692 HYPERVISOR: exec_cmd: vm extract_config R6 
+Jan 26 14:44:05.916 HYPERVISOR: exec_cmd: vm set_ghost_status R6 2 
+Jan 26 14:44:05.916 HYPERVISOR: exec_cmd: vm set_ghost_file R6 D:\D\4TC\NAS\nas-netwk-gen-main\GNS\NAS_Mathis\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
+Jan 26 14:44:05.916 HYPERVISOR: exec_cmd: vm get_status R6 
+Jan 26 14:44:05.916 HYPERVISOR: exec_cmd: vm set_config R6 configs\i6_startup-config.cfg configs\i6_private-config.cfg 
+Jan 26 14:44:05.916 HYPERVISOR: exec_cmd: vm start R6 
+Jan 26 14:52:06.507 HYPERVISOR: exec_cmd: vm extract_config R6 
+Jan 26 14:54:16.914 HYPERVISOR: exec_cmd: vm get_status R6 
+Jan 26 14:54:16.914 HYPERVISOR: exec_cmd: vm slot_disable_nio R6 0 0 
+Jan 26 14:54:16.930 HYPERVISOR: exec_cmd: vm slot_remove_nio_binding R6 0 0 
+Jan 26 14:54:16.946 HYPERVISOR: exec_cmd: nio delete udp-2f4b5435-a59e-447f-b9cb-da0db2f578b9 
+Jan 26 14:54:41.359 HYPERVISOR: exec_cmd: vm get_status R6 
+Jan 26 14:54:41.359 HYPERVISOR: exec_cmd: vm stop R6 
+Jan 26 14:54:41.640 VM: VM R6 shutdown.
+Jan 26 14:54:41.640 HYPERVISOR: exec_cmd: vm extract_config R6 
+Jan 26 14:55:00.907 HYPERVISOR: exec_cmd: vm get_status R6 
+Jan 26 14:55:00.908 HYPERVISOR: exec_cmd: vm extract_config R6 
+Jan 26 14:55:01.274 HYPERVISOR: exec_cmd: vm get_status R6 
+Jan 26 14:55:01.275 HYPERVISOR: exec_cmd: vm extract_config R6 
+Jan 26 14:55:01.276 HYPERVISOR: exec_cmd: vm delete R6 
+Jan 26 14:55:01.276 VM: VM R6 destroyed.
+Jan 26 14:55:01.278 HYPERVISOR: exec_cmd: hypervisor stop 
+Jan 26 14:55:01.644 HYPERVISOR: Stopped.
+Jan 26 14:55:01.644 GENERAL: reset done.
