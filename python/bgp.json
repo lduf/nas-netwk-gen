@@ -1,0 +1,50 @@
+{
+  "ibgp" : {
+    "required_config" : [
+      "config_terminal"
+    ],
+    "variables" : [
+      "as_number",
+      "neighbor_ip",
+      "neighbor_as"
+    ],
+    "command" : [
+      "router bgp {as_number}",
+      "neighbor {neighbor_ip} remote-as {neighbor_as}",
+      "neighbor {neighbor_ip} send-community",
+      "address-family ipv4 unicast",
+      "neighbor {neighbor_ip} activate",
+      "end"
+    ]
+  },
+  "ebgp" : {
+    "required_config" : [
+      "config_terminal"
+    ],
+    "variables" : [
+      "as_number",
+      "neighbor_ip",
+      "neighbor_as",
+      "route_map_name_in",
+      "route_map_name_out",
+      "sequence_number",
+      "x",
+      "relation_type"
+    ],
+    "command" : [
+      "router bgp {as_number}",
+      "neighbor {neighbor_ip} remote-as {neighbor_as}",
+      "address-family ipv4 unicast",
+      "neighbor {neighbor_ip} activate",
+      "neighbor {neighbor_ip} route-map {route_map_name_in} in",
+      "neighbor {neighbor_ip} route-map {route_map_name_out} out",
+      "exit",
+      "route-map {route_map_name_in} permit {sequence_number}",
+      "match ip address {x}",
+      "set local-pref {relation_type}",
+      "set community {community_number}",
+      "exit",
+      "route-map {route_map_name_out} permit "
+    ]
+  }
+}
