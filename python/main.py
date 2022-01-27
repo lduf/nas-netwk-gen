@@ -15,6 +15,7 @@ import argparse
 parser = argparse.ArgumentParser(description='Run topology configuration algorithm')
 parser.add_argument('-f', '--topology_file', type=str, help='give the topology file name (default : topology.json)', metavar='', default="topology.json")
 parser.add_argument("-v", "--verbose", help="output verbosity", action="store_true")
+parser.add_argument("-g", "--generate_ip", help="generate an ip conf from scratch or not", action="store_true")
 args = parser.parse_args()
 
 def read_data(filename):
@@ -109,7 +110,10 @@ def configurate_routers(dict_commands_to_send):
 
 def main(topology_file):
     # génération des IP (se fera seulement si certaiens interfaces n'ont pas d'IP affectées)
-    ip_topology = ip_generator.generate_ip_topology(topology_file)
+    if args.generate_ip :
+        ip_topology = ip_generator.generate_ip_topology(topology_file)
+    else :
+        ip_topology = read_data(topology_file)
 
     # récupération des commandes à envoyer à chaque routeur pour la configuration
     dict_commands_to_send = get_commands_for_routers(ip_topology)

@@ -2,10 +2,15 @@
 import json
 import sys
 import re
+import argparse
+
 """
 This file is used to create the API to generate the GNS3 configurations command.
 """
 
+parser = argparse.ArgumentParser(description='This script is used to get information about the commands')
+parser.add_argument('-c', '--command', type=str, help='The command on which you want to get parameters list', metavar='')
+args = parser.parse_args()
 
 """
  @brief: This function is used to generate the GNS3 configurations command lines. It's a ±recursive function which calls
@@ -86,21 +91,10 @@ def get_command_list():
     return data.keys()
 
 if __name__ == '__main__':
-    command_name = "ip_address"
-    # Read the command requirements from the command.json file
 
-    # get the parameters to modify for this command
-    parameters_command = get_commands_parameters(command_name)
+    if args.command:
+        # get the parameters to modify for this command
+        parameters_command = get_commands_parameters(args.command)
 
-    # Create the API to generate the GNS3 configurations command
-    print("Command name: {0}\nParameters: {1}".format(command_name, parameters_command))
-
-    dict_args = {
-        "mask" : "255.255.255.0", 
-        "ip_address" : "127.0.0.1", 
-        "interface_name": "GigabitEthernet1/0", 
-        "wildcard_mask" : "0.0.255.255",
-        "area_id": "1"
-    }
-    final_commands = get_commands(command_name, dict_args)
-    print(f"Command name: {command_name}\nCommands for {command_name}: {final_commands}")
+        # Create the API to generate the GNS3 configurations command
+        print("Command name: {0}\nParameters: {1}".format(args.command, parameters_command))
