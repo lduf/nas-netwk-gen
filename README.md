@@ -15,7 +15,7 @@ The python files are in the python folder. Please make sure to install all the r
 ```bash
 pip3 install -r requirements.txt
 ```
-It is possible that the installation of the gns3fy library is quite complex, if need be, you can use this precise branch :
+There may be problems with the installation, if it's needed, you can use this precise branch :  
 ```bash
 pip install gns3fy @ git+https://github.com/davidban77/gns3fy@583c9aa0a64bac9cb3fdd9631a3af151496cb56e
 ```
