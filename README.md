@@ -1,14 +1,24 @@
 # nas-netwk-gen
 
-## Usage : 
+## Introduction to the project : 
+
+The original goal of the project is to automate the production of a topology configuration on the gns3 software, including the following protocols OSPF, MPLS and BGP.
+The project and its files are subdivided into two distinct but communicating parts, in the GNS folder you will find different topologies that can be used, some are blank and others are pre-configured. 
+For example, the most advanced and detailed configuration with the optimal and targeted final configuration is located in \GNS\NAS_Final.
+The automation part works like this, first you have to produce or use a gns3 topology with nodes and links, but without configuration. Then you can move on to the next part.
+
+
+## Python Usage : 
 
 The python files are in the python folder. Please make sure to install all the required packages before running the python files.
 
 ```bash
 pip3 install -r requirements.txt
 ```
-
-
+It is possible that the installation of the gns3fy library is quite complex, if need be, you can use this precise branch :
+```bash
+pip install gns3fy @ git+https://github.com/davidban77/gns3fy@583c9aa0a64bac9cb3fdd9631a3af151496cb56e
+```
 
 ### Get the current topology from GNS3
 
@@ -17,6 +27,7 @@ We are using `gns3fy` library to get the project's topology. You may run the fol
 ```bash
 python3 topo.py [-h] [-o] gns3_file
 ```
+Your lab gns3 needs to be open.
 
 ```bash
 usage: topo.py [-h] [-o] gns3_file
