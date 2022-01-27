@@ -114,6 +114,7 @@ If you want you can write the file topology.json, which will be read by main.py,
 ## Json topology :
 
 Here below is an exemple of the description of a router on the topology file (this first exemple shows a basic router inside an ospf area)  
+(Inside the python folder there is an exemple of a topology_file)  
 
 ```
 "R1": { //router number
