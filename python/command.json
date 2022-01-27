@@ -116,14 +116,106 @@
             "bgp_en"
         ],
         "variables" : [
+            "network",
             "neighbor_ip",
             "neighbor_as"
         ],
         "command" : [
+            "bgp log-neighbor-changes",
             "neighbor {neighbor_ip} remote-as {neighbor_as}",
             "address-family ipv4 unicast",
             "neighbor {neighbor_ip} activate",
+            "network {network} mask {mask}",
+            "exit"
+        ]
+    },
+    "ibgp" : {
+        "required_config" : [
+            "bgp"
+        ],
+        "command" : [
+            "neighbor {neighbor_ip} update-source Loopback0"
+        ]
+    },
+    "ebgp_provider" : {
+        "required_config" : [
+            "community_list",
+            "route_map",
+            "bgp"
+        ],
+        "command" : [
+            "address-family ipv4 unicast",
+            "neighbor {neighbor_ip} route-map FROM_PROVIDER in",
+            "neighbor {neighbor_ip} route-map TO_PROVIDER out",
             "end"
+        ]
+    },
+    "ebgp_client" : {
+        "required_config" : [
+            "community_list",
+            "route_map",
+            "bgp"
+        ],
+        "command" : [
+            "address-family ipv4 unicast",
+            "neighbor {neighbor_ip} route-map TO_CLIENT in",
+            "end"
+        ]
+    },
+    "community_list_client" : {
+        "required_config" : [
+            "config_terminal"
+        ],
+        "variables" : [
+            "list_number",
+            "permit_type"
+        ],
+        "command" : [
+            "ip community-list {list_number} permit internet",
+            "end"
+        ]
+    },
+    "community_list_provider" : {
+        "required_config" : [
+            "config_terminal"
+        ],
+        "variables" : [
+            "list_number",
+            "permit_type"
+        ],
+        "command" : [
+            "ip community-list {list_number} permit internet",
+            "end"
+        ]
+    },
+    "route_map" : {
+        "required_config" : [
+            "config_terminal"
+        ],
+        "variables" : [
+            "routemap_name",
+            "list_number"
+        ],
+        "command" : [
+            "route-map {routemap_name} permit 10",
+            "match community {list_number}"
+        ]
+    },
+    "route_map_pref" : {
+        "required_config" : [
+            "config_terminal"
+        ],
+        "variables" : [
+            "routemap_name",
+            "list_number",
+            "community_name",
+            "local_pref"
+        ],
+        "command" : [
+            "route-map {routemap_name} permit 10",
+            "match community {list_number}",
+            "set local-preference {local_pref}",
+            "set community {community_name}"
         ]
     }
 }
