@@ -171,7 +171,7 @@
             "permit_type"
         ],
         "command" : [
-            "ip community-list {list_number} permit internet",
+            "ip community-list {list_number} permit {community_type}",
             "end"
         ]
     },
@@ -184,16 +184,16 @@
             "permit_type"
         ],
         "command" : [
-            "ip community-list {list_number} permit internet",
+            "ip community-list {list_number} permit {community_type}",
             "end"
         ]
     },
-    "route_map" : {
+    "route_map_out" : {
         "required_config" : [
             "config_terminal"
         ],
         "variables" : [
-            "routemap_name",
+            "routemap_name_out",
             "list_number"
         ],
         "command" : [
@@ -201,12 +201,12 @@
             "match community {list_number}"
         ]
     },
-    "route_map_pref" : {
+    "route_map_in" : {
         "required_config" : [
             "config_terminal"
         ],
         "variables" : [
-            "routemap_name",
+            "routemap_name_in",
             "list_number",
             "community_name",
             "local_pref"
@@ -214,7 +214,7 @@
         "command" : [
             "route-map {routemap_name} permit 10",
             "match community {list_number}",
-            "set local-preference {local_pref}",
+            "set local-preference {relation_type}",
             "set community {community_name}"
         ]
     }

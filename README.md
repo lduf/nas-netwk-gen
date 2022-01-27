@@ -147,6 +147,38 @@ Here below is an exemple of the description of a router on the topology file (th
                 }
             },
 ```
+Then, an interface that implements ebgp will look like this (when you call the protocol "ebgp" for exemple, you will execute the commands for ebgp explained in commands.json filled with the parameters)  
+
+```
+"GigabitEthernet3/0": {
+                "neighbor": {
+                    "name": "R8",
+                    "interface": "GigabitEthernet1/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "bgp", //We will activate bgp (with router bgp number)
+                    "ebgp_provider", //this ebgp interface will ac as a provider for another node
+                    "community_list_client", //Will will implement the community list client model
+                    "route_map_in" //and the route map in model
+                ],
+                "parameters": {
+                    "ip_address": "10.0.10.6",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet3/0",
+                    "neighbor_ip": "10.0.10.8",
+                    "neighbor_as": "200",
+                    "relation_type": 50, //All theses parameters are needed to complete the commande called before (see the descriptions of commands in commands.json)
+                    "routemap_name_in": "FROM_PROVIDER",
+                    "list_number": "207",
+                    "community_name": "1007"
+                },
+                "ip": {
+                    "ip_address": "10.0.10.6",
+                    "mask": "255.255.255.0"
+                }
+            },
+```
 
 ### GNS3 project configuration from the topology file
 

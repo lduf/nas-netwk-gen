@@ -115,7 +115,7 @@ def enable_bgp(router, bgprouter, menu2, relation_type="peer"):
 
     topo[neighbor_router_name]["interfaces"][neighbor_interface_name]["parameters"]["neighbor_ip"] = router_ip_address
     topo[neighbor_router_name]["interfaces"][neighbor_interface_name]["parameters"]["neighbor_as"] = router_as_number
-    topo[neighbor_router_name]["interfaces"][neighbor_interface_name]["protocols"].append(bgp_type)
+    #topo[neighbor_router_name]["interfaces"][neighbor_interface_name]["protocols"].append(bgp_type)
     topo[neighbor_router_name]["interfaces"][neighbor_interface_name]["parameters"]["relation_type"] = weight[reverse[relation_type]]
     topo[neighbor_router_name]["interfaces"][neighbor_interface_name]["parameters"]["network"] = router_network
 
