@@ -134,13 +134,16 @@
             "bgp"
         ],
         "command" : [
-            "neighbor {neighbor_ip} update-source Loopback0"
+            "neighbor {neighbor_ip} update-source Loopback0",
+            "neighbor {neighbor_ip} send-community",
+            "end"
         ]
     },
     "ebgp_provider" : {
         "required_config" : [
-            "community_list",
-            "route_map",
+            "community_list_client",
+            "route_map_in",
+            "route_map_out",
             "bgp"
         ],
         "command" : [
@@ -152,8 +155,8 @@
     },
     "ebgp_client" : {
         "required_config" : [
-            "community_list",
-            "route_map",
+            "community_list_provider",
+            "route_map_in",
             "bgp"
         ],
         "command" : [
@@ -167,11 +170,12 @@
             "config_terminal"
         ],
         "variables" : [
-            "list_number",
-            "permit_type"
+            "list_number_1",
+            "list_number_2"
         ],
         "command" : [
-            "ip community-list {list_number} permit {community_type}",
+            "ip community-list {list_number_1} permit internet",
+            "ip community-list {list_number_2} permit 1008",
             "end"
         ]
     },
@@ -180,11 +184,10 @@
             "config_terminal"
         ],
         "variables" : [
-            "list_number",
-            "permit_type"
+            "list_number_1"
         ],
         "command" : [
-            "ip community-list {list_number} permit {community_type}",
+            "ip community-list {list_number_1} permit internet",
             "end"
         ]
     },
@@ -194,11 +197,12 @@
         ],
         "variables" : [
             "routemap_name_out",
-            "list_number"
+            "list_number_2"
         ],
         "command" : [
-            "route-map {routemap_name} permit 10",
-            "match community {list_number}"
+            "route-map {routemap_name_out} permit 10",
+            "match community {list_number_2}",
+            "continue"
         ]
     },
     "route_map_in" : {
@@ -207,13 +211,12 @@
         ],
         "variables" : [
             "routemap_name_in",
-            "list_number",
-            "community_name",
-            "local_pref"
+            "list_number_1",
+            "community_name"
         ],
         "command" : [
-            "route-map {routemap_name} permit 10",
-            "match community {list_number}",
+            "route-map {routemap_name_in} permit 10",
+            "match community {list_number_1}",
             "set local-preference {relation_type}",
             "set community {community_name}"
         ]
