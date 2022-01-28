@@ -1,0 +1,634 @@
+{
+    "R1": {
+        "router_id": "996e4fd9-9ca0-4b18-9ac5-8d5d14a58192",
+        "parameters": {
+            "ospf_process_id": "1",
+            "router_id": "1.1.1.1",
+            "area_id": "1"
+        },
+        "console": 6000,
+        "interfaces": {
+            "GigabitEthernet2/0": {
+                "neighbor": {
+                    "name": "R3",
+                    "interface": "GigabitEthernet1/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.1.1",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet2/0"
+                },
+                "ip": {
+                    "ip_address": "10.0.1.1",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "GigabitEthernet1/0": {
+                "neighbor": {
+                    "name": "R2",
+                    "interface": "GigabitEthernet1/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.2.1",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet1/0"
+                },
+                "ip": {
+                    "ip_address": "10.0.2.1",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "GigabitEthernet3/0": {
+                "neighbor": {
+                    "name": "R5",
+                    "interface": "GigabitEthernet1/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.3.1",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet3/0"
+                },
+                "ip": {
+                    "ip_address": "10.0.3.1",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "Loopback0": {
+                "ip": {
+                    "ip_address": "1.1.1.1",
+                    "mask": "255.255.255.255"
+                },
+                "parameters": {
+                    "ip_address": "1.1.1.1",
+                    "mask": "255.255.255.255",
+                    "interface_name": "Loopback0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf"
+                ]
+            }
+        }
+    },
+    "R2": {
+        "router_id": "efc33e42-02f4-4f4a-953e-2f811684a890",
+        "parameters": {
+            "ospf_process_id": "1",
+            "router_id": "2.2.2.2",
+            "area_id": "1"
+        },
+        "console": 6001,
+        "interfaces": {
+            "GigabitEthernet1/0": {
+                "neighbor": {
+                    "name": "R1",
+                    "interface": "GigabitEthernet1/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.2.2",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet1/0"
+                },
+                "ip": {
+                    "ip_address": "10.0.2.2",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "FastEthernet0/0": {
+                "neighbor": {
+                    "name": "R5",
+                    "interface": "FastEthernet0/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.4.2",
+                    "mask": "255.255.255.0",
+                    "interface_name": "FastEthernet0/0"
+                },
+                "ip": {
+                    "ip_address": "10.0.4.2",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "GigabitEthernet2/0": {
+                "neighbor": {
+                    "name": "R4",
+                    "interface": "GigabitEthernet1/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.5.2",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet2/0"
+                },
+                "ip": {
+                    "ip_address": "10.0.5.2",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "Loopback0": {
+                "ip": {
+                    "ip_address": "2.2.2.2",
+                    "mask": "255.255.255.255"
+                },
+                "parameters": {
+                    "ip_address": "2.2.2.2",
+                    "mask": "255.255.255.255",
+                    "interface_name": "Loopback0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf"
+                ]
+            }
+        }
+    },
+    "R3": {
+        "router_id": "e01ee11f-f9c6-4753-ae9e-ae7673a942d6",
+        "parameters": {
+            "ospf_process_id": "1",
+            "router_id": "3.3.3.3",
+            "area_id": "1"
+        },
+        "console": 6002,
+        "interfaces": {
+            "GigabitEthernet1/0": {
+                "neighbor": {
+                    "name": "R1",
+                    "interface": "GigabitEthernet2/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.1.3",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet1/0"
+                },
+                "ip": {
+                    "ip_address": "10.0.1.3",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "GigabitEthernet3/0": {
+                "neighbor": {
+                    "name": "R4",
+                    "interface": "GigabitEthernet3/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.6.3",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet3/0"
+                },
+                "ip": {
+                    "ip_address": "10.0.6.3",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "GigabitEthernet2/0": {
+                "neighbor": {
+                    "name": "R6",
+                    "interface": "GigabitEthernet1/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.7.3",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet2/0"
+                },
+                "ip": {
+                    "ip_address": "10.0.7.3",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "Loopback0": {
+                "ip": {
+                    "ip_address": "3.3.3.3",
+                    "mask": "255.255.255.255"
+                },
+                "parameters": {
+                    "ip_address": "3.3.3.3",
+                    "mask": "255.255.255.255",
+                    "interface_name": "Loopback0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf"
+                ]
+            }
+        }
+    },
+    "R4": {
+        "router_id": "380a5cd9-63b9-451d-a830-03fbc18a4db4",
+        "parameters": {
+            "ospf_process_id": "1",
+            "router_id": "4.4.4.4",
+            "area_id": "1"
+        },
+        "console": 6003,
+        "interfaces": {
+            "GigabitEthernet3/0": {
+                "neighbor": {
+                    "name": "R3",
+                    "interface": "GigabitEthernet3/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.6.4",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet3/0"
+                },
+                "ip": {
+                    "ip_address": "10.0.6.4",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "GigabitEthernet1/0": {
+                "neighbor": {
+                    "name": "R2",
+                    "interface": "GigabitEthernet2/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.5.4",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet1/0"
+                },
+                "ip": {
+                    "ip_address": "10.0.5.4",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "GigabitEthernet2/0": {
+                "neighbor": {
+                    "name": "R6",
+                    "interface": "GigabitEthernet2/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.8.4",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet2/0"
+                },
+                "ip": {
+                    "ip_address": "10.0.8.4",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "Loopback0": {
+                "ip": {
+                    "ip_address": "4.4.4.4",
+                    "mask": "255.255.255.255"
+                },
+                "parameters": {
+                    "ip_address": "4.4.4.4",
+                    "mask": "255.255.255.255",
+                    "interface_name": "Loopback0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf"
+                ]
+            }
+        }
+    },
+    "R5": {
+        "router_id": "a74b8cf1-7819-4b5b-943a-fbe00b225172",
+        "parameters": {
+            "as_number": "100",
+            "router_id": "5.5.5.5",
+            "area_id": "1",
+            "ospf_process_id": "1"
+        },
+        "console": 6004,
+        "interfaces": {
+            "GigabitEthernet1/0": {
+                "neighbor": {
+                    "name": "R1",
+                    "interface": "GigabitEthernet3/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.3.5",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet1/0"
+                },
+                "ip": {
+                    "ip_address": "10.0.3.5",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "FastEthernet0/0": {
+                "neighbor": {
+                    "name": "R2",
+                    "interface": "FastEthernet0/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.4.5",
+                    "mask": "255.255.255.0",
+                    "interface_name": "FastEthernet0/0"
+                },
+                "ip": {
+                    "ip_address": "10.0.4.5",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "GigabitEthernet2/0": {
+                "neighbor": {
+                    "name": "R7",
+                    "interface": "GigabitEthernet1/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ebgp_provider"
+                ],
+                "parameters": {
+                    "ip_address": "192.168.1.5",
+                    "mask": "255.255.255.0",
+                    "network": "192.168.1.0",
+                    "interface_name": "GigabitEthernet2/0",
+                    "neighbor_ip": "192.168.1.7",
+                    "neighbor_as": "300",
+                    "relation_type": "50",
+                    "list_number_1": "107",
+                    "list_number_2": "207",
+                    "routemap_name_in": "FROM_PROVIDER",
+                    "routemap_name_out": "TO_PROVIDER",
+                    "community_name": "1007"
+                },
+                "ip": {
+                    "ip_address": "192.168.1.5",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "Loopback0": {
+                "ip": {
+                    "ip_address": "5.5.5.5",
+                    "mask": "255.255.255.255"
+                },
+                "parameters": {
+                    "ip_address": "5.5.5.5",
+                    "mask": "255.255.255.255",
+                    "interface_name": "Loopback0",
+                    "neighbor_ip": "6.6.6.6",
+                    "neighbor_as": "100",
+                    "network": "5.5.5.5"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ibgp",
+                    "ospf"
+                ]
+            }
+        }
+    },
+    "R6": {
+        "router_id": "c4855de5-2115-459a-990d-515884948e34",
+        "parameters": {
+            "as_number": "100",
+            "router_id": "6.6.6.6",
+            "area_id": "1",
+            "ospf_process_id": "1"
+        },
+        "console": 6005,
+        "interfaces": {
+            "GigabitEthernet1/0": {
+                "neighbor": {
+                    "name": "R3",
+                    "interface": "GigabitEthernet2/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.7.6",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet1/0"
+                },
+                "ip": {
+                    "ip_address": "10.0.7.6",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "GigabitEthernet2/0": {
+                "neighbor": {
+                    "name": "R4",
+                    "interface": "GigabitEthernet2/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf",
+                    "mpls"
+                ],
+                "parameters": {
+                    "ip_address": "10.0.8.6",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet2/0"
+                },
+                "ip": {
+                    "ip_address": "10.0.8.6",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "GigabitEthernet3/0": {
+                "neighbor": {
+                    "name": "R8",
+                    "interface": "GigabitEthernet1/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ebgp_client"
+                ],
+                "parameters": {
+                    "ip_address": "192.168.2.6",
+                    "mask": "255.255.255.0",
+                    "network": "192.168.2.0",
+                    "interface_name": "GigabitEthernet3/0",
+                    "neighbor_ip": "192.168.2.8",
+                    "neighbor_as": "200",
+                    "relation_type": "150",
+                    "list_number_1": "108",
+                    "routemap_name_in": "TO_CLIENT",
+                    "community_name": "1008"
+                },
+                "ip": {
+                    "ip_address": "192.168.2.6",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "Loopback0": {
+                "ip": {
+                    "ip_address": "6.6.6.6",
+                    "mask": "255.255.255.255"
+                },
+                "parameters": {
+                    "ip_address": "6.6.6.6",
+                    "mask": "255.255.255.255",
+                    "interface_name": "Loopback0",
+                    "neighbor_ip": "5.5.5.5",
+                    "neighbor_as": "100",
+                    "network": "6.6.6.6"
+                },
+                "protocols": [
+                    "ip_address",
+                    "ospf",
+                    "ibgp"
+                ]
+            }
+        }
+    },
+    "R7": {
+        "router_id": "6343c9d7-2486-430c-9768-d459bb3858cd",
+        "parameters": {
+            "router_id":"7.7.7.7",
+            "as_number": "300"
+        },
+        "console": 6006,
+        "interfaces": {
+            "GigabitEthernet1/0": {
+                "neighbor": {
+                    "name": "R5",
+                    "interface": "GigabitEthernet2/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "bgp"
+                ],
+                "parameters": {
+                    "ip_address": "192.168.1.7",
+                    "network": "192.168.1.0",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet1/0",
+                    "neighbor_ip": "192.168.1.5",
+                    "neighbor_as": "100"
+                },
+                "ip": {
+                    "ip_address": "192.168.1.7",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "Loopback0": {
+                "ip": {
+                    "ip_address": "7.7.7.7",
+                    "mask": "255.255.255.255"
+                },
+                "parameters": {
+                    "ip_address": "7.7.7.7",
+                    "mask": "255.255.255.255",
+                    "interface_name": "Loopback0"
+                },
+                "protocols": [
+                    "ip_address"
+                ]
+            }
+        }
+    },
+    "R8": {
+        "router_id": "aede8e90-c380-45a7-b4d7-5abb18f0b938",
+        "parameters": {
+            "router_id": "8.8.8.8",
+            "as_number": "200"
+        },
+        "console": 6007,
+        "interfaces": {
+            "GigabitEthernet1/0": {
+                "neighbor": {
+                    "name": "R6",
+                    "interface": "GigabitEthernet3/0"
+                },
+                "protocols": [
+                    "ip_address",
+                    "bgp"
+                ],
+                "parameters": {
+                    "ip_address": "192.168.2.8",
+                    "network": "192.168.2.0",
+                    "mask": "255.255.255.0",
+                    "interface_name": "GigabitEthernet1/0",
+                    "neighbor_ip": "192.168.2.6",
+                    "neighbor_as": "100"
+                },
+                "ip": {
+                    "ip_address": "192.168.2.8",
+                    "mask": "255.255.255.0"
+                }
+            },
+            "Loopback0": {
+                "ip": {
+                    "ip_address": "8.8.8.8",
+                    "mask": "255.255.255.255"
+                },
+                "parameters": {
+                    "ip_address": "8.8.8.8",
+                    "mask": "255.255.255.255",
+                    "interface_name": "Loopback0"
+                },
+                "protocols": [
+                    "ip_address"
+                ]
+            }
+        }
+    }
+}
